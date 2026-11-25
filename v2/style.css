@@ -60,3 +60,5 @@ nav .home img{display:block;width:36px;height:36px}
 .hero h1{color:#F7F3EC}
 .rb1{background-size:110% 100%;padding-right:.05em}
 .rb2{background-size:110% 100%;padding-right:.05em}
+.hero h1{color:#F7F3EC}
+body.research::before{opacity:.6;animation:drift 20s linear infinite}
