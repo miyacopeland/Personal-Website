@@ -54,3 +54,6 @@ nav .home img{display:block;width:36px;height:36px}
 .card{min-width:0;overflow-wrap:anywhere}
 .steps li{border-radius:8px;transition:transform .35s,background .35s,box-shadow .35s}
 .steps li:hover{transform:translateY(-3px);background:rgba(255,179,92,.08);box-shadow:0 0 22px rgba(255,179,92,.28)}
+.rb1,.rb2{-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.rb1{background-image:linear-gradient(90deg,#ff4d5e,#ff8a3d 25%,#ffd54a 50%,#4fe08a 75%,#38d6ff)}
+.rb2{background-image:linear-gradient(90deg,#38d6ff,#5b8cff 35%,#b06bff 70%,#ff4fd8)}
