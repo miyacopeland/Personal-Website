@@ -39,14 +39,14 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:2rem 6%;color:#8a8f9a;
 #chirp text{fill:#ffffff;font-size:11px;letter-spacing:2px}
 #chirp line{stroke:#ffb35c;stroke-width:1}
 .card a{display:inline-block;margin-top:.4rem}
-
 .branch{list-style:none;margin:1rem 0 0;padding:0 0 0 1.1rem;border-left:1px solid #ffb35c}
 .branch li{position:relative;padding:.5rem 0 .5rem .9rem}
 .branch li::before{content:"";position:absolute;left:-1.1rem;top:1.2rem;width:1rem;border-top:1px solid #ffb35c}
-
 .headshot{object-position:center top}
 @media(max-width:600px){.headshot{object-position:center 10%}}
-
 @keyframes drift{from{background-position:0 0}to{background-position:200px 120px}}
 body.research::before{animation:drift 60s linear infinite}
 .card a{display:inline-block;margin-top:.4rem}
+nav .btn{margin-left:0}
+nav .home{display:flex;align-items:center}
+nav .home img{display:block;width:36px;height:36px}
