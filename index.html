@@ -1,92 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Miyauna Copeland</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#141926;--card:#1b2233;--gold:#E8C84A;--text:#e8e6df;--muted:#a9afbd}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:'EB Garamond',serif;font-size:1.2rem;line-height:1.7;position:relative}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.07;
- background:
-  radial-gradient(circle at 80% 20%,transparent 0 120px,var(--gold) 121px 122px,transparent 123px 200px,var(--gold) 201px 202px,transparent 203px),
-  repeating-linear-gradient(0deg,transparent 0 79px,var(--gold) 80px)}
-.eq{position:fixed;right:4%;bottom:6%;font:italic 1.3rem 'Cormorant Garamond',serif;color:var(--gold);opacity:.1;z-index:0;pointer-events:none;text-align:right}
-header,main,footer{position:relative;z-index:1}
-header{display:flex;justify-content:space-between;padding:1.5rem 6%;font-family:'Cormorant Garamond',serif;font-size:1.3rem}
-header a{color:var(--text);text-decoration:none;margin-left:2rem}
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:4rem 6%;max-width:1200px;margin:auto}
-h1{font-family:'Cormorant Garamond',serif;font-size:4rem;line-height:1.05;margin:0 0 .5rem}
-.sub{color:var(--gold);font-size:1.3rem;margin:0 0 1.2rem}
-.btns{display:flex;gap:1rem;margin-top:1.8rem}
-.btn{padding:.8rem 1.6rem;border-radius:2px;text-decoration:none;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.15rem;border:1.5px solid var(--gold)}
-.fill{background:var(--gold);color:#141926}
-.outline{background:transparent;color:var(--gold)}
-svg{width:100%;height:auto}
-.chirp{fill:none;stroke:var(--gold);stroke-width:2.5;stroke-linecap:round}
-.merge{stroke:var(--gold);stroke-width:1.5;stroke-dasharray:5 6;opacity:0;animation:fade .8s ease 2.6s forwards}
-.label{fill:var(--gold);font:14px 'EB Garamond',serif;opacity:0;animation:fade .8s ease 2.8s forwards;letter-spacing:.1em}
-@keyframes draw{to{stroke-dashoffset:0}}
-@keyframes fade{to{opacity:1}}
-section{max-width:1000px;margin:auto;padding:2rem 6%}
-h2{font-family:'Cormorant Garamond',serif;font-size:2.2rem;margin:0 0 1rem}
-.badges{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.badge,.card{background:var(--card);border-left:3px solid var(--gold);padding:1rem 1.2rem}
-.cards{display:grid;gap:1.2rem}
-.card{transition:transform .2s}.card:hover{transform:translateY(-4px)}
-.pill{display:inline-block;font-size:.85rem;padding:.1rem .7rem;border-radius:99px;margin-bottom:.4rem}
-.on{background:var(--gold);color:#141926}.past{background:#2a3144;color:var(--muted)}
-footer{text-align:center;color:var(--muted);padding:3rem}
-@media(max-width:800px){.hero,.badges{grid-template-columns:1fr}h1{font-size:2.8rem}}
-</style>
-</head>
-<body>
-<div class="eq">ω<sub>lmn</sub> = (c³/GM)·f(a) − i/τ<sub>lmn</sub><br>ds² = −(1−2M/r)dt² + …</div>
-<header><strong>Miyauna Copeland</strong><nav><a href="#">home</a><a href="#contact">contact</a></nav></header>
-<main>
-<div class="hero">
-  <div>
-    <h1>Miyauna<br>Copeland</h1>
-    <p class="sub">Physics · University of Texas at Dallas</p>
-    <p>Gravitational-wave astronomy, computational astrophysics, and instrumentation for lunar and planetary environments.</p>
-    <div class="btns"><a class="btn fill" href="#research">View Research</a><a class="btn outline" href="#contact">Get in Touch</a></div>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<nav><a class="on" href="index.html">home</a><a href="research.html">research</a><a href="publications.html">publications</a><a href="contact.html">contact</a></nav>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <h1>Miyauna Copeland</h1>
+      <p class="sub">Undergraduate, Physics, University of Texas at Dallas</p>
+      <a class="btn" href="contact.html">Get in Touch</a>
+    </div>
+    <svg id="chirp" viewBox="0 0 380 200" aria-label="Gravitational wave chirp. Hover to replay.">
+      <path/><line x1="270" y1="55" x2="270" y2="145"/><text x="276" y="62">MERGER</text>
+    </svg>
   </div>
-  <svg viewBox="0 0 600 300" aria-label="Gravitational wave chirp">
-    <path id="wave" class="chirp"/>
-    <line class="merge" x1="430" y1="30" x2="430" y2="270"/>
-    <text class="label" x="440" y="45">MERGER</text>
-  </svg>
+
+  <h2>About Me</h2>
+  <p>I am an incoming transfer student at the University of Texas at Dallas, studying physics. (Paste your about paragraph here.)</p>
+  <figure><img src="images/home.jpg" alt="" onerror="this.outerHTML='<div class=ph></div>'"><figcaption>Photo caption and credit</figcaption></figure>
+  <p>My interests include gravitational-wave astronomy, computational and observational astrophysics, and instrumentation for lunar and planetary environments.</p>
+
+  <h2>Awards &amp; Honors</h2>
+  <div class="item"><b>NASA L'SPACE Proposal Winner</b><span>LUNA-CAST team member, $10,000 NASA seed funding, 2026</span></div>
+  <div class="item"><b>NASA Community College Aerospace Scholars</b><span>Active participant, 2026–2027</span></div>
 </div>
-<section><div class="badges">
-  <div class="badge">NASA L'SPACE Winning Team</div>
-  <div class="badge">LUNA-CAST · $10K NASA Seed Funding</div>
-  <div class="badge">NASA CCAS · Active Participant, 2026–2027</div>
-</div></section>
-<section id="research"><h2>Research</h2><div class="cards">
-  <div class="card"><span class="pill on">Ongoing</span><h3>Black-Hole Ringdown</h3><p>Kerr quasinormal-mode predictions for LIGO–Virgo events using Python and the qnm package.</p></div>
-  <div class="card"><span class="pill on">Ongoing</span><h3>LUNA-CAST</h3><p>Instrument and measurement planning for lunar dust mobilization experiments.</p></div>
-  <div class="card"><span class="pill past">Past Work</span><h3>Mission Concept Academy</h3><p>Chief Scientist for a proposed Martian cave exploration mission.</p></div>
-</div></section>
-<section><h2>About Me</h2><p>I am an undergraduate at the University of Texas at Dallas studying physics. (Paste your about paragraph here.)</p></section>
-<section id="contact"><h2>Get in Touch</h2><a class="btn fill" href="mailto:you@example.com">Email me</a></section>
-</main>
-<footer>© Miyauna Copeland</footer>
-<script>
-const p=document.getElementById('wave');let d='';
-for(let x=0;x<=560;x++){
-  const t=x/430, tt=Math.min(t,1);
-  let amp,phase;
-  if(x<=430){amp=8+110*Math.pow(tt,3.2);phase=60*Math.pow(tt,2.2)*Math.PI}
-  else{const k=(x-430)/130;amp=70*Math.exp(-4.5*k);phase=60*Math.PI+k*28}
-  const y=150-amp*Math.sin(phase);
-  d+=(x?'L':'M')+(x+20)+' '+y.toFixed(1);
-}
-p.setAttribute('d',d);
-const L=p.getTotalLength();
-p.style.strokeDasharray=L;p.style.strokeDashoffset=L;
-p.style.animation='draw 3.2s cubic-bezier(.5,0,.3,1) .3s forwards';
-</script>
-</body>
-</html>
+<footer>© 2026 Miyauna Copeland</footer>
+<script src="script.js"></script>
+</body></html>
