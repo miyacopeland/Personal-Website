@@ -57,3 +57,6 @@ nav .home img{display:block;width:36px;height:36px}
 .rb1,.rb2{-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
 .rb1{background-image:linear-gradient(90deg,#ff4d5e,#ff8a3d 25%,#ffd54a 50%,#4fe08a 75%,#38d6ff)}
 .rb2{background-image:linear-gradient(90deg,#38d6ff,#5b8cff 35%,#b06bff 70%,#ff4fd8)}
+.hero h1{color:#F7F3EC}
+.rb1{background-size:110% 100%;padding-right:.05em}
+.rb2{background-size:110% 100%;padding-right:.05em}
