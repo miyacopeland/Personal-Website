@@ -35,3 +35,4 @@ form{display:grid;gap:1rem;max-width:560px}
 input,select,textarea{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.7rem;color:#e8e6e1;font:inherit}
 footer{border-top:1px solid rgba(255,255,255,.08);padding:2rem 6%;color:#8a8f9a;font-size:.9rem}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.headshot{width:200px;height:200px;object-fit:cover;border-radius:50%;border:2px solid #ffb35c;display:block;margin:0 0 1.5rem}
