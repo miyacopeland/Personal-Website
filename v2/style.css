@@ -51,3 +51,7 @@ nav .btn{margin-left:0}
 nav .home{display:flex;align-items:center}
 nav .home img{display:block;width:36px;height:36px}
 .headshot{margin-left:1.2rem}
+.card{min-width:0;overflow-wrap:anywhere}
+.steps li{border-radius:8px;transition:transform .35s,background .35s,box-shadow .35s}
+.steps li:hover{transform:translateY(-3px);background:rgba(255,179,92,.08);box-shadow:0 0 22px rgba(255,179,92,.28)}
+<h1>Listening to the<br><span style="background-image:linear-gradient(90deg,#ff4d5e,#ff8a3d 25%,#ffd54a 50%,#4fe08a 75%,#38d6ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">ring</span>&nbsp;<span style="background-image:linear-gradient(90deg,#38d6ff,#5b8cff 35%,#b06bff 70%,#ff4fd8);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">of spacetime.</span></h1>
