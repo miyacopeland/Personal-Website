@@ -50,3 +50,4 @@ body.research::before{animation:drift 60s linear infinite}
 nav .btn{margin-left:0}
 nav .home{display:flex;align-items:center}
 nav .home img{display:block;width:36px;height:36px}
+.headshot{object-position:35% top}
