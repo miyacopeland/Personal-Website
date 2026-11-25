@@ -1,0 +1,14 @@
+.lead{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--gold);margin:.3rem 0 1.5rem}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1rem 0}
+.card{background:var(--card);border-left:3px solid var(--gold);padding:1rem 1.2rem}
+.card b{font-family:'Cormorant Garamond',serif;font-size:1.35rem;display:block}
+.card p{margin:.3rem 0 0;font-size:1.05rem;color:var(--muted);line-height:1.5}
+.steps{counter-reset:s;list-style:none;padding:0;margin:1rem 0}
+.steps li{counter-increment:s;background:var(--card);padding:.9rem 1.2rem .9rem 3.4rem;margin:.6rem 0;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:1.1rem;top:.7rem;font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--gold)}
+form{display:grid;gap:1rem;margin-top:1rem}
+label{font-size:1rem;color:var(--muted);display:grid;gap:.3rem}
+input,select,textarea{background:var(--card);color:var(--text);border:1px solid #2f3a55;padding:.7rem;font:inherit;border-radius:2px}
+textarea{min-height:140px}
+button.btn{background:transparent;cursor:pointer;font-size:1.1rem;justify-self:start}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
