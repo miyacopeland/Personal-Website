@@ -9,17 +9,19 @@ if(svg){
     d+=(x?'L':'M')+(x+10)+' '+(100-a*Math.sin(ph)).toFixed(1);
   }
   p.setAttribute('d',d);
+  p.setAttribute('fill','none');p.setAttribute('stroke','#E8C84A');p.setAttribute('stroke-width','2.4');p.setAttribute('stroke-linecap','round');
+  m.setAttribute('stroke','#E8C84A');m.setAttribute('stroke-width','1.5');m.setAttribute('stroke-dasharray','4 5');
+  t.setAttribute('fill','#E8C84A');t.setAttribute('font-size','13');t.setAttribute('letter-spacing','2');
   const L=p.getTotalLength();
-  p.style.strokeDasharray=L;
-  let anims=[];
-  const play=()=>{
-    anims.forEach(a=>a.cancel());
-    anims=[
-      p.animate([{strokeDashoffset:L},{strokeDashoffset:0}],{duration:2000,easing:'cubic-bezier(.5,0,.3,1)',fill:'forwards'}),
-      m.animate([{opacity:0},{opacity:.8}],{duration:500,delay:1500,fill:'forwards'}),
-      t.animate([{opacity:0},{opacity:.9}],{duration:500,delay:1700,fill:'forwards'})
-    ];
-  };
+  let busy=false,timer;
+  function play(){
+    clearTimeout(timer);busy=true;
+    p.style.transition='none';p.style.strokeDasharray=L;p.style.strokeDashoffset=L;
+    m.style.transition='none';t.style.transition='none';m.style.opacity=0;t.style.opacity=0;
+    void p.getBoundingClientRect();
+    p.style.transition='stroke-dashoffset 2s cubic-bezier(.5,0,.3,1)';p.style.strokeDashoffset=0;
+    timer=setTimeout(()=>{m.style.transition='opacity .5s';t.style.transition='opacity .5s';m.style.opacity=1;t.style.opacity=1;busy=false},1700);
+  }
   play();
-  svg.addEventListener('mouseenter',()=>{if(anims[0].playState==='finished')play()});
+  svg.addEventListener('mouseenter',()=>{if(!busy)play()});
 }
