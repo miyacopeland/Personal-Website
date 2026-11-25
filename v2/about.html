@@ -3,25 +3,30 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About | Miyauna Copeland</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=6">
 </head><body>
-<nav><a class="home" href="index.html"><img src="logos/logo.svg" alt="Home" width="36" height="36"></a><a href="research.html">Research</a><a href="about.html">About</a><a href="contact.html">Contact</a><a class="btn" href="contact.html">Get in Touch</a></nav><div class="wrap">
+<nav><a class="home" href="index.html"><img src="logos/logo.svg" alt="Home" width="36" height="36"></a><a href="research.html">Research</a><a class="on" href="about.html">About</a><a href="contact.html">Contact</a><a class="btn" href="contact.html">Get in Touch</a></nav><div class="wrap">
  <p class="label" style="margin-top:2rem">Hi, again!</p>
  <p style="font-size:1.15rem">If you made it this far: my name is Miyauna, or Miya for short. It's a pleasure to make your acquaintance.</p>
- <h1 style="margin-top:1rem">Curious about gravity, careful with data.</h1> <p>I'm a physics undergraduate working toward a research career in strong-field gravity, gravitational waves and instrumentation for lunar and planetary science.</p>
-<img src="miya.jpeg" alt="Miyauna Copeland" class="headshot"><h2>My Story</h2>
-<p>For a while, someone in my life kept asking why I wanted to study physics. Over time I understood that it wasn't curiosity. It was a test of whether I would talk myself out of it. His conclusion never changed: without a lifelong background in mathematics, and without a mind wired a particular way, I wasn't a serious candidate for this field. He said it gently, as a kindness, which somehow made it harder to hear.</p>
-<p>These conversations came after I had been selected as Chief Scientist for NASA L'SPACE's Mission Concept Academy, where I led the science requirements for a proposed Mars subsurface exploration mission. They did not change his view. I didn't argue with him. I decided that the most honest answer to that kind of doubt is not a debate. It is a record.</p>
-<p class="principle">Doubt from outside tells you very little about what is possible. Physics does not belong to one kind of mind or one kind of background.</p>
-<p>So I keep building. I am completing an A.S. in Physics at Austin Community College and transferring to the University of Texas at Dallas for a B.S., with the intention of continuing into the Fast Track M.S. program. I am studying black-hole ringdown on my own. The question behind it is whether the ringdown of merging black holes is fully described by general relativity. For now, my project computes Kerr predictions for catalog events and keeps them clearly separate from the measurements. I am doing this because I decided to, not because I was born with a particular kind of brain.</p>
-<p>I am a Black woman who moved to Texas alone at eighteen and started this path at a community college. I want to contribute to gravitational-wave science at the highest level, and I know how that sounds to some people. I am grateful for every program and every person willing to take it seriously alongside me.</p>
-<p>Alongside research, I work as a Project Coordinator on healthcare projects at Parkhill, Smith &amp; Cooper, tracking deadlines, coordinating teams and keeping the paperwork accurate.</p>
+ <h1 style="margin-top:1rem">Curious about gravity, careful with data.</h1>
+ <p>I'm a physics undergraduate working toward a research career in strong-field gravity, gravitational waves and instrumentation for lunar and planetary science.</p>
+ <img src="miya.jpeg" alt="Miyauna Copeland" class="headshot">
+
+ <div class="stage" aria-hidden="true"><div class="pin"><canvas id="merger"></canvas><div class="cap" id="mcap">Scroll to bring them together</div></div></div>
+
+ <div class="after">
+ <h2>My Story</h2>
+ <p>For a while, someone in my life kept asking why I wanted to study physics. Over time I understood that it wasn't curiosity. It was a test of whether I would talk myself out of it. His conclusion never changed: without a lifelong background in mathematics, and without a mind wired a particular way, I wasn't a serious candidate for this field. He said it gently, as a kindness, which somehow made it harder to hear.</p>
+ <p>These conversations came after I had been selected as Chief Scientist for NASA L'SPACE's Mission Concept Academy, where I led the science requirements for a proposed Mars subsurface exploration mission. They did not change his view. I didn't argue with him. I decided that the most honest answer to that kind of doubt is not a debate. It is a record.</p>
+ <p class="principle">Doubt from outside tells you very little about what is possible. Physics does not belong to one kind of mind or one kind of background.</p>
+ <p>So I keep building. I am completing an A.S. in Physics at Austin Community College and transferring to the University of Texas at Dallas for a B.S., with the intention of continuing into the Fast Track M.S. program. I am studying black-hole ringdown on my own. The question behind it is whether the ringdown of merging black holes is fully described by general relativity. For now, my project computes Kerr predictions for catalog events and keeps them clearly separate from the measurements. I am doing this because I decided to, not because I was born with a particular kind of brain.</p>
+ <p>I am a Black woman who moved to Texas alone at eighteen and started this path at a community college. I want to contribute to gravitational-wave science at the highest level, and I know how that sounds to some people. I am grateful for every program and every person willing to take it seriously alongside me.</p>
+ <p>Alongside research, I work as a Project Coordinator on healthcare projects at Parkhill, Smith &amp; Cooper, tracking deadlines, coordinating teams and keeping the paperwork accurate.</p>
  <h2>Education</h2>
  <div class="grid">
   <div class="card"><span class="tag">Ongoing</span><h3>A.S. Physics</h3>Austin Community College, August 2024 – present.</div>
   <div class="card"><h3>B.S. Physics</h3>The University of Texas at Dallas, incoming Fall 2027.</div>
  </div>
-
  <h2>The Path So Far</h2>
  <ol class="steps">
   <li><b>Aug 2024.</b> Began an A.S. in Physics and started studying general relativity, differential geometry and tensor calculus on my own.</li>
@@ -33,7 +38,8 @@
  </ol>
  <p>Languages: English (native), French (B1)</p>
  <p><a class="btn" href="research.html">Read the Research</a></p>
+ </div>
 </div>
 <footer>© 2026 Miyauna Copeland.</footer>
+<script src="about.js"></script>
 </body></html>
-<h1>Listening to the<br><span style="background-image:linear-gradient(90deg,#ff4d5e,#ff8a3d 25%,#ffd54a 50%,#4fe08a 75%,#38d6ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">ring</span>&nbsp;<span style="background-image:linear-gradient(90deg,#38d6ff,#5b8cff 35%,#b06bff 70%,#ff4fd8);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">of spacetime.</span></h1>
