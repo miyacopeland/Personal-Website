@@ -14,10 +14,10 @@ nav .btn{margin-left:auto}
 .wrap{max-width:1000px;margin:0 auto;padding:0 6% 4rem}
 .btn{display:inline-block;background:#ffb35c;color:#05060a;padding:.55em 1.3em;border-radius:999px;text-decoration:none;font-weight:500}
 .btn.ghost{background:none;color:#ffb35c;border:1px solid #ffb35c}
-.badge,.label{color:#6fe3ff;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
-.tag{display:inline-block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid #6fe3ff;color:#6fe3ff;border-radius:999px;padding:0 .7em;margin-right:.5em}
+.badge,.label{color:#f2efe8;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+.tag{display:inline-block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid #f2efe8;color:#f2efe8;border-radius:999px;padding:0 .7em;margin-right:.5em}
 .tag.past{border-color:#8a8f9a;color:#8a8f9a}
-.hero{position:relative;padding:4rem 0 2rem;background:radial-gradient(ellipse at 75% 20%,rgba(255,179,92,.14),transparent 60%),radial-gradient(ellipse at 20% 0%,rgba(111,227,255,.08),transparent 55%)}
+.hero{position:relative;padding:4rem 0 2rem;background:radial-gradient(ellipse at 75% 20%,rgba(255,179,92,.14),transparent 60%),radial-gradient(ellipse at 20% 0%,rgba(255,255,255,.06),transparent 55%)}
 .top{display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center}
 @media(max-width:760px){.top{grid-template-columns:1fr}}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1.4rem}
