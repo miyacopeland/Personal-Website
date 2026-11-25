@@ -62,3 +62,10 @@ nav .home img{display:block;width:36px;height:36px}
 .rb2{background-size:110% 100%;padding-right:.05em}
 .hero h1{color:#F7F3EC}
 body.research::before{opacity:.6;animation:drift 20s linear infinite}
+.stage{height:260vh;position:relative;margin-top:2rem}
+.stage .pin{position:sticky;top:0;height:100vh}
+#merger{width:100%;height:100%;display:block}
+.stage .cap{position:absolute;left:0;right:0;bottom:12%;text-align:center;color:#f2efe8;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.stage{display:none}.reveal{opacity:1;transform:none}}
