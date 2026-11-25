@@ -36,3 +36,16 @@ input,select,textarea{background:rgba(255,255,255,.05);border:1px solid rgba(255
 footer{border-top:1px solid rgba(255,255,255,.08);padding:2rem 6%;color:#8a8f9a;font-size:.9rem}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 .headshot{width:200px;height:200px;object-fit:cover;border-radius:50%;border:2px solid #ffb35c;display:block;margin:0 0 1.5rem}
+#chirp text{fill:#ffffff;font-size:11px;letter-spacing:2px}
+#chirp line{stroke:#ffb35c;stroke-width:1}
+.card a{display:inline-block;margin-top:.4rem}
+
+.branch{list-style:none;margin:1rem 0 0;padding:0 0 0 1.1rem;border-left:1px solid #ffb35c}
+.branch li{position:relative;padding:.5rem 0 .5rem .9rem}
+.branch li::before{content:"";position:absolute;left:-1.1rem;top:1.2rem;width:1rem;border-top:1px solid #ffb35c}
+
+.headshot{object-position:center top}
+@media(max-width:600px){.headshot{object-position:center 10%}}
+
+@keyframes drift{from{background-position:0 0}to{background-position:200px 120px}}
+body.research::before{animation:drift 60s linear infinite}
