@@ -30,11 +30,27 @@
 #inside .lamp{position:absolute;top:3vh;width:34px;height:34px;border-radius:50%;background:#ff4040;box-shadow:0 0 40px 14px rgba(255,64,64,.8);animation:alarm .7s ease-in-out infinite}
 #inside .l1{left:6%}#inside .l2{right:6%;animation-delay:.35s}
 #inside .warn{position:absolute;left:0;right:0;top:40vh;text-align:center;color:#ffd9d9;letter-spacing:.3em;font-size:.95rem;text-transform:uppercase;animation:alarm .7s ease-in-out infinite}
-#runner{bottom:1vh;left:0;width:min(17vh,130px);margin:0}
-#runner svg{display:block;width:100%;height:auto;transform-origin:50% 100%}
-#ruL,#ruR,#raL,#raR{transform-box:view-box}
-#ruL{transform-origin:40px 120px}#ruR{transform-origin:60px 120px}#raL{transform-origin:19px 60px}#raR{transform-origin:73px 60px}
 @keyframes alarm{0%,100%{opacity:.12}50%{opacity:.6}}
+@keyframes bl{0%,100%{opacity:.25}50%{opacity:1}}
+@keyframes rf{0%,100%{opacity:.05}50%{opacity:.4}}
+@keyframes bob{0%,100%{transform:translateY(-8px)}50%{transform:translateY(8px)}}
+#runner{position:absolute;left:0;top:22vh;width:min(18vh,150px);margin:0;z-index:2}
+#runner .bob{animation:bob 4.5s ease-in-out infinite}
+#runner svg{display:block;width:100%;height:auto;transform-origin:50% 50%}
+#ruL,#ruR,#raL,#raR{transform-box:view-box}
+#ruL{transform-origin:40px 108px}#ruR{transform-origin:60px 108px}
+#raL{transform-origin:18px 62px}#raR{transform-origin:82px 62px}
+.blink{animation:bl .7s infinite}.rf{animation:rf .7s infinite}
+.console{position:absolute;left:50%;bottom:24%;transform:translateX(-50%);width:min(780px,90%);height:min(20vh,150px);display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:10px;padding:12px 10px 10px;background:linear-gradient(#1a0505,#0d0202);border:2px solid rgba(255,120,120,.35);border-radius:10px 10px 0 0}
+.scr{border:1px solid rgba(255,90,90,.6);background:#1a0404;border-radius:6px;padding:6px 10px;color:#ff9a9a;font:600 .72rem/1.3 'EB Garamond',serif;letter-spacing:.14em;text-transform:uppercase;display:flex;flex-direction:column;justify-content:center;gap:5px;box-shadow:inset 0 0 18px rgba(255,40,40,.35)}
+.scr strong{font-size:clamp(.9rem,2.4vw,1.5rem);color:#fff;letter-spacing:.3em;animation:bl .7s steps(2,end) infinite}
+.bar{display:block;height:10px;border:1px solid #ff6a6a}
+.bar u{display:block;height:100%;width:6%;background:#ff4040;animation:bl .7s infinite}
+.scr svg{width:100%;height:34px}
+.btns{position:absolute;left:14px;right:14px;top:-8px;display:flex;justify-content:space-around}
+.btns i{width:12px;height:12px;border-radius:50%;background:#ff4040;box-shadow:0 0 12px 3px rgba(255,64,64,.8);animation:bl .7s infinite}
+.btns i:nth-child(even){animation-delay:.35s}
+@media(max-width:700px){.s3{display:none}.console{grid-template-columns:1fr 1.4fr}}
 #crk{left:0;top:0;width:110px;margin:-80px 0 0 -55px;will-change:transform;z-index:2}
 #crk svg{display:block;width:100%;height:auto}
 #crk .fl{transform-box:fill-box;transform-origin:50% 0}
@@ -80,7 +96,6 @@
   <div id="ground" aria-hidden="true"></div>
   <div id="planets" aria-hidden="true"><div class="pl moon"></div><div class="pl earth"></div><div class="pl jup"></div><div class="pl sat"></div></div>
   <div id="mars" aria-hidden="true"></div>
-  <div id="chint">Scroll</div>
 
   <div id="crk" aria-hidden="true">
    <svg viewBox="0 0 90 130">
@@ -94,26 +109,43 @@
    </svg>
   </div>
 
-  <div id="inside" aria-hidden="true">
-   <div class="wall"></div><div class="port"></div><div class="floor"></div>
-   <div class="flash"></div><div class="lamp l1"></div><div class="lamp l2"></div>
-   <div class="warn">Engine offline</div>
-   <div id="runner"><svg viewBox="0 0 100 200">
-    <circle cx="50" cy="8" r="9" fill="#0b0b0f"/><ellipse cx="50" cy="28" rx="19" ry="20" fill="#0b0b0f"/>
-    <rect x="45" y="44" width="10" height="10" fill="#8d5a3b"/><circle cx="50" cy="31" r="15" fill="#8d5a3b"/>
-    <path d="M35 28Q36 14 50 14Q64 14 65 28Q58 20 50 20Q42 20 35 28Z" fill="#0b0b0f"/>
-    <circle cx="44" cy="31" r="2" fill="#fff"/><circle cx="56" cy="31" r="2" fill="#fff"/><ellipse cx="50" cy="40" rx="3" ry="3.6" fill="#3a1010"/>
-    <g id="ruL"><rect x="34" y="120" width="13" height="72" rx="6" fill="#0b0b0f" stroke="#55607d" stroke-width="1.2"/></g>
-    <g id="ruR"><rect x="53" y="120" width="13" height="72" rx="6" fill="#0b0b0f" stroke="#55607d" stroke-width="1.2"/></g>
-    <path d="M26 56Q50 46 74 56L78 124H22Z" fill="#17306b" stroke="#6f86c4" stroke-width="1.4"/>
-    <path d="M43 52L50 70L57 52Z" fill="#f5f1e8"/><path d="M40 52L50 82L60 52" fill="none" stroke="#d4af37" stroke-width="1.6"/>
-    <g id="raL"><rect x="14" y="58" width="10" height="38" rx="5" fill="#17306b" stroke="#6f86c4" stroke-width="1.2"/><circle cx="19" cy="99" r="5.5" fill="#8d5a3b"/></g>
-    <g id="raR"><rect x="68" y="58" width="10" height="38" rx="5" fill="#17306b" stroke="#6f86c4" stroke-width="1.2"/><circle cx="73" cy="99" r="5.5" fill="#8d5a3b"/></g>
-   </svg></div>
-  </div>
-
+<div class="console">
+ <div class="btns"><i></i><i></i><i></i><i></i><i></i></div>
+ <div class="scr s1"><b>Fuel</b><i class="bar"><u></u></i><span>0%</span></div>
+ <div class="scr s2"><strong>Emergency</strong><span>Engine offline</span><span>Oxygen low</span></div>
+ <div class="scr s3"><b>Nav</b><svg viewBox="0 0 100 40"><polyline points="0,20 20,20 30,5 40,35 50,20 100,20" fill="none" stroke="#ff4040" stroke-width="2"/></svg></div>
+</div>
+  <div id="runner"><div class="bob"><svg viewBox="0 0 100 180">
+ <defs><radialGradient id="vz" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#3a4f8f"/><stop offset="1" stop-color="#0a1530"/></radialGradient></defs>
+ <rect x="20" y="50" width="60" height="64" rx="12" fill="#cfcac0" stroke="#aab4cc" stroke-width="1.2"/>
+ <g id="ruL"><rect x="33" y="108" width="15" height="48" rx="7" fill="#f5f1e8" stroke="#aab4cc" stroke-width="1.2"/><rect x="31" y="152" width="19" height="16" rx="6" fill="#2a2d3a"/></g>
+ <g id="ruR"><rect x="52" y="108" width="15" height="48" rx="7" fill="#f5f1e8" stroke="#aab4cc" stroke-width="1.2"/><rect x="50" y="152" width="19" height="16" rx="6" fill="#2a2d3a"/></g>
+ <path d="M24 58Q50 48 76 58L78 112H22Z" fill="#f5f1e8" stroke="#aab4cc" stroke-width="1.4"/>
+ <rect x="22" y="100" width="56" height="7" fill="#17306b"/>
+ <rect x="38" y="68" width="24" height="17" rx="3" fill="#17306b" stroke="#6f86c4"/>
+ <circle class="blink" cx="45" cy="76" r="2.4" fill="#ff4040"/><circle cx="52" cy="76" r="2" fill="#d4af37"/><circle cx="58" cy="76" r="2" fill="#7bd88f"/>
+ <g id="raL"><rect x="11" y="58" width="14" height="44" rx="7" fill="#f5f1e8" stroke="#aab4cc" stroke-width="1.2"/><circle cx="18" cy="106" r="8" fill="#8a8f9a"/></g>
+ <g id="raR"><rect x="75" y="58" width="14" height="44" rx="7" fill="#f5f1e8" stroke="#aab4cc" stroke-width="1.2"/><circle cx="82" cy="106" r="8" fill="#8a8f9a"/></g>
+ <ellipse cx="50" cy="54" rx="17" ry="5" fill="#aab4cc"/>
+ <circle cx="50" cy="30" r="26" fill="#f5f1e8" stroke="#aab4cc" stroke-width="1.6"/>
+ <ellipse cx="50" cy="32" rx="19" ry="16" fill="#8d5a3b"/>
+ <path d="M31 30Q32 14 50 14Q68 14 69 30Q60 22 50 22Q40 22 31 30Z" fill="#0b0b0f"/>
+ <circle cx="44" cy="34" r="2.6" fill="#fff"/><circle cx="56" cy="34" r="2.6" fill="#fff"/>
+ <circle cx="44" cy="34.4" r="1.2" fill="#0b0b0f"/><circle cx="56" cy="34.4" r="1.2" fill="#0b0b0f"/>
+ <ellipse cx="50" cy="42" rx="2.6" ry="3" fill="#3a1010"/>
+ <ellipse cx="50" cy="32" rx="19" ry="16" fill="url(#vz)" opacity=".55"/>
+ <path d="M36 24Q42 18 50 18" fill="none" stroke="#fff" stroke-width="2" opacity=".55" stroke-linecap="round"/>
+ <ellipse class="rf" cx="58" cy="38" rx="6" ry="4" fill="#ff4040"/>
+</svg></div></div>
   <div id="boom"></div><div id="ring"></div>
-
+<div id="eggs" aria-hidden="true">
+ <span class="egg">Bazinga!</span>
+ <span class="egg em">🖖</span>
+ <span class="egg">Soft Kitty 🐱</span>
+ <span class="egg">My spot</span>
+ <span class="egg">Schrödinger's cat: alive and dead</span>
+ <span class="egg">Rock · Paper · Scissors · Lizard · Spock</span>
+</div>
   <div id="chars" aria-hidden="true">
    <div class="ast"><svg viewBox="0 0 130 150">
     <g transform="translate(10,0)">
@@ -206,14 +238,15 @@
   pls.style.opacity=1-C((p-.35)/.03);
 
   ins.style.opacity=C((p-.36)/.03)*(1-C((p-.54)/.03));
-  var u=C((p-.36)/.19)*3,xf=Math.abs((u%2)-1),ph=p*900;
-  run.style.transform='translateX('+(W*.08+xf*(W*.84-run.offsetWidth))+'px)';
-  run.firstElementChild.style.transform='rotate('+(Math.sin(ph*.5)*4)+'deg)';
-  legs[0].style.transform='rotate('+(Math.sin(ph)*35)+'deg)';
-  legs[1].style.transform='rotate('+(-Math.sin(ph)*35)+'deg)';
-  legs[2].style.transform='rotate('+(-Math.sin(ph)*45)+'deg)';
-  legs[3].style.transform='rotate('+(Math.sin(ph)*45)+'deg)';
-
+   var ft=(p-.36)*60;
+  var fx=W*.5+Math.sin(ft*.9)*W*.26-run.offsetWidth/2;
+  var fy=Math.sin(ft*1.3)*H*.06;
+  run.style.transform='translate('+fx+'px,'+fy+'px)';
+  run.querySelector('svg').style.transform='rotate('+(Math.sin(ft*.7)*24+Math.sin(ft*.31)*14)+'deg)';
+  legs[0].style.transform='rotate('+(8+Math.sin(ft*1.1)*12)+'deg)';
+  legs[1].style.transform='rotate('+(-8+Math.sin(ft*1.1+1.6)*12)+'deg)';
+  legs[2].style.transform='rotate('+(-25+Math.sin(ft*.9)*14)+'deg)';
+  legs[3].style.transform='rotate('+(25+Math.sin(ft*.9+2)*14)+'deg)';
   mars.style.opacity=C((p-.54)/.03)*(1-C((p-.72)/.03));
   mars.style.transform='scale('+(.3+.7*C((p-.54)/.11))+')';
 
