@@ -61,3 +61,5 @@ body.research::before{opacity:.6;animation:drift 20s linear infinite}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.stage{display:none}.reveal{opacity:1;transform:none;filter:none}}
 nav .home{margin-right:auto}
 .headshot{width:210px;height:270px;border-radius:50%;object-fit:cover;object-position:center top}
+nav .home{margin-right:auto}
+.headshot{width:210px;height:270px;border-radius:50%;object-fit:cover;object-position:center top}
