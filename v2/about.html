@@ -4,11 +4,12 @@
 <title>About | Miyauna Copeland</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=39">
-</head><body>
-<nav><a class="home" href="index.html"><img src="logos/logo.svg" alt="Home" width="36" height="36"></a><a href="research.html">Research</a><a href="about.html" class="on">About</a><a href="contact.html">Contact</a></nav>
-<link rel="icon" href="logos/favicon.svg" type="image/svg+xml">
+ <link rel="icon" href="logos/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="logos/favicon.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="logos/favicon.png">
+</head><body>
+<nav><a class="home" href="index.html"><img src="logos/logo.svg" alt="Home" width="36" height="36"></a><a href="research.html">Research</a><a href="about.html" class="on">About</a><a href="contact.html">Contact</a></nav>
+
  
 <!-- SEQUENCE 1: doubt, black hole, principle -->
 <section class="journey" data-h="320vh">
@@ -141,8 +142,8 @@
    var H=innerHeight,Wd=innerWidth;
    var sp=(p>.58&&p<.76)?C((p-.58)/.03):0;
 var rk=document.getElementById('rocket'),mm=document.querySelector('.me');
-var cs=getComputedStyle(rk),rw=parseFloat(cs.width)||60,rh=parseFloat(cs.height)||120;
-var mx=mm.offsetLeft+mm.offsetWidth/2,my=mm.offsetTop+mm.offsetHeight/2;
+var cs=getComputedStyle(rk),rw=parseFloat(cs.width)||150,rh=parseFloat(cs.height)||300,top0=H*.5+(parseFloat(cs.marginTop)||-130);
+   var mx=mm.offsetLeft+mm.offsetWidth/2,my=mm.offsetTop+mm.offsetHeight/2;
 var x=0,y,rot,sc=1,fy,y0=H*.33;
 if(p<.76){
  x=Math.sin(p*500)*5*sp;y=H*(.45-.12*C((p-.56)/.2))+Math.sin(p*420)*4*sp;
@@ -154,11 +155,11 @@ if(p<.76){
 }else if(p<1.26){
  var b=C((p-1.02)/.16),e=1-Math.pow(1-b,3);
  var cx=-rw+(mx+rw)*e,cy=my-Math.sin(Math.PI*b)*H*.12;
- x=cx-Wd/2;y=cy-rh/2-H*.5;
+x=cx-Wd/2;y=cy-rh/2-top0;
  rot=-720*(1-e)+Math.sin(b*30)*8*(1-b);sc=.2+.95*e;fy=1.2;
 }else{
  var c2=C((p-1.26)/.14);
- x=mx-Wd/2;y=my-rh/2-H*.5-(my+rh*2)*c2*c2;sc=1.15;rot=0;fy=2+c2;
+x=mx-Wd/2;y=my-rh/2-top0-(my+rh*2)*c2*c2;sc=1.15;rot=0;fy=2+c2;
 }
 rk.style.transform='translate('+x+'px,'+y+'px) rotate('+rot+'deg) scale('+sc+')';
 rk.querySelector('path:last-child').style.transform='scaleY('+fy+')';
@@ -182,8 +183,8 @@ if(tk>0){mm.style.transform='scale('+(1-.85*tk)+')';mm.style.opacity=1-C((p-1.24
    starts.forEach(function(st){var dd=p-st;if(dd>=0&&dd<.035)amp=Math.max(amp,1-dd/.035);});
    if(p>.30&&p<.42)amp=Math.max(amp,.45);
    me.style.transform='translate('+(Math.sin(p*1400)*7*amp)+'px,'+(Math.cos(p*1100)*3*amp)+'px) rotate('+(Math.sin(p*900)*4*amp)+'deg)';
-   wv.style.transform='translateX('+(-Math.min(p,1)*900)+'px)';
-  }
+wv.style.transform='translateX('+(-Math.min(p,1)*900)+'px)';
+wv.style.opacity=.7*(1-C((p-.76)/.14));  }
  }
  function all(){secs.forEach(run)}
  addEventListener('scroll',all,{passive:true});addEventListener('resize',all);all();
