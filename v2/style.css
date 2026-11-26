@@ -98,7 +98,13 @@ body.research::before{opacity:.6;animation:drift 20s linear infinite}
 .c4{left:18%;bottom:57vh}
 .c5{left:30%;bottom:38vh}
 .c6{left:8%;bottom:30vh}
-
+.v1{left:36%;bottom:66vh;rotate:-3deg}
+.v2{left:8%;bottom:62vh;rotate:2deg}
+.v3{right:8%;bottom:48vh;rotate:3deg}
+.v4{left:26%;bottom:70vh;rotate:-2deg}
+.v5{right:12%;bottom:62vh;rotate:-3deg}
+.v6{left:44%;bottom:30vh;rotate:2deg}
+.v7{right:6%;bottom:36vh;rotate:-2deg}
 .launch{width:100%;max-width:none;height:100%;padding:0}
 .waves{position:absolute;left:0;top:50%;width:200%;stroke:#d4af37;fill:none;stroke-width:2;opacity:.7}
 .rocket{position:absolute;left:50%;top:50%;width:150px;margin:-130px 0 0 -75px;will-change:transform}
@@ -122,6 +128,7 @@ body.research::before{opacity:.6;animation:drift 20s linear infinite}
  .chip.say{width:170px}
  .me{width:70px}
  .c4,.c5{display:none}
+ .v4,.v5,.v6,.v7{display:none}
 }
 
 /* ===== Reduced motion ===== */
