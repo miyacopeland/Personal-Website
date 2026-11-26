@@ -70,7 +70,7 @@ nav .home{margin-right:auto}
 nav .home{margin-right:auto}
 .headshot{width:210px;height:270px;border-radius:50%;object-fit:cover;object-position:center top}
 .headshot.side{float:right;margin:0 0 1rem 1.5rem;position:relative;left:0}
-#chirp{display:block;width:100%;max-width:380px;height:auto}
+#chirp{display:block;width:100%;max-width:640px;height:auto}
+#chirp text{font-size:17px;letter-spacing:2px}
+#chirp line{stroke:#ffffff;stroke-width:2}
 #merger{display:block;width:100%;max-width:640px;height:420px;margin:0 auto}
-#chirp{display:block;width:100%;height:auto}
-#chirp line{stroke:#ffffff;stroke-width:1.5}
