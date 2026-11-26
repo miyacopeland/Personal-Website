@@ -72,3 +72,5 @@ nav .home{margin-right:auto}
 .gallery figure{margin:0;text-align:center}
 .gallery img{display:block;width:210px;height:270px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid #ffb35c}
 .gallery figcaption{font-size:.9rem;color:#8a8f9a;margin-top:.5rem}
+.after{max-width:1000px;margin:0 auto;padding:0 6% 4rem}
+#merger{display:block;width:100%;height:100%;max-width:none;margin:0;-webkit-mask-image:radial-gradient(ellipse at center,#000 45%,transparent 75%);mask-image:radial-gradient(ellipse at center,#000 45%,transparent 75%)}
