@@ -80,7 +80,11 @@
 .icons svg{width:24px;height:24px}
 #chint{left:0;right:0;bottom:6vh;text-align:center;color:#f2efe8;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;z-index:2}
 @media(max-width:700px){#chars{gap:.5rem}.ali svg{height:min(17vh,120px)}#chars svg{height:min(19vh,140px)}}
-@media(prefers-reduced-motion:reduce){
+#eggs{inset:0;z-index:5;pointer-events:none}
+.egg{position:absolute;left:0;top:0;white-space:nowrap;opacity:0;font-size:.85rem;padding:.25rem .7rem;border:1px solid rgba(212,175,55,.6);border-radius:999px;background:rgba(10,21,48,.85);color:#f5f1e8}
+.egg.em{font-size:2rem;border:0;background:none;padding:0}
+@media(prefers-reduced-motion:reduce){#eggs{display:none}}
+ @media(prefers-reduced-motion:reduce){
  *{animation:none!important;transition:none!important}
  .cj{height:auto}.cp{position:static;height:auto;overflow:visible;padding:2rem 0}
  .cp>*{position:static}
@@ -207,12 +211,20 @@
  var sec=$('cj'),rk=$('crk'),fl=rk.querySelector('.fl'),boom=$('boom'),ring=$('ring'),chars=$('chars'),
   ban=$('banner'),hint=$('chint'),pls=$('planets'),mars=$('mars'),ins=$('inside'),gr=$('ground'),run=$('runner');
  var a1=$('ali1');
+ var eggs=[].slice.call(document.querySelectorAll('.egg'));
  [.18,.36].forEach(function(d,i){var c=a1.cloneNode(true);c.id='ali'+(i+2);
   [].forEach.call(c.querySelectorAll('.al,.ar'),function(g){g.style.animationDelay=(-d)+'s'});
   c.querySelector('svg').style.height='min('+(i?19:23)+'vh,'+(i?135:165)+'px)';
   chars.appendChild(c);});
  var legs=['ruL','ruR','raL','raR'].map($);
  function frame(){
+    var ep=C((p-.67)/.13);
+  eggs.forEach(function(el,i){
+   var ang=(-165+i*30)*Math.PI/180,dist=ep*Math.max(W,H)*(.22+.07*(i%3));
+   var ex=tx+Math.cos(ang)*dist,ey=ty+Math.sin(ang)*dist+160*ep*ep;
+   el.style.opacity=C(ep*5)*(1-C((ep-.8)/.2));
+   el.style.transform='translate('+ex+'px,'+ey+'px) translate(-50%,-50%) rotate('+((i%2?1:-1)*240*ep)+'deg)';
+  });
   var W=innerWidth,H=innerHeight;
   var p=C(-sec.getBoundingClientRect().top/(sec.offsetHeight-H));
   var x,y,rot,fs=0,show=0;
