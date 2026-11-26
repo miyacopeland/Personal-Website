@@ -105,6 +105,15 @@
  #banner,#chars{opacity:1!important;visibility:visible!important;transform:none!important;margin:1rem auto}
 }
  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88);backdrop-filter:blur(6px)}
+.cam{position:absolute;left:0;top:0;opacity:0;text-align:center;color:#f5f1e8;font-size:.7rem;letter-spacing:.08em;white-space:nowrap}
+.cam svg{display:block;width:clamp(44px,7vw,70px);height:auto;margin:0 auto .2rem}
+.cam b{font-weight:500;background:rgba(10,21,48,.85);border:1px solid rgba(212,175,55,.6);border-radius:999px;padding:.1rem .5rem}
+@keyframes hop{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+#chars .ast,#chars .ali{animation:hop .45s ease-in-out infinite}
+#chars .ali:nth-child(3){animation-delay:-.12s}#chars .ali:nth-child(4){animation-delay:-.24s}
+#mor{left:0;bottom:2vh;width:min(24vh,190px);opacity:0;visibility:hidden;z-index:2;pointer-events:none}
+#mor svg{display:block;width:100%;height:auto;animation:hop .4s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){#mor{display:none}}
 </style>
 </head><body>
 <nav><a class="home" href="index.html"><img src="logos/logo.svg" alt="Home" width="36" height="36"></a><a href="research.html">Research</a><a href="about.html">About</a><a href="contact.html" class="on">Contact</a></nav>
@@ -189,12 +198,35 @@
    </div>
   <div id="boom"></div><div id="ring"></div>
 <div id="eggs" aria-hidden="true">
- <span class="egg">Bazinga!</span>
- <span class="egg em">🖖</span>
- <span class="egg">Soft Kitty 🐱</span>
- <span class="egg">My spot</span>
- <span class="egg">Schrödinger's cat: alive and dead</span>
- <span class="egg">Rock · Paper · Scissors · Lizard · Spock</span>
+ <span class="cam"><svg viewBox="0 0 60 100">
+  <rect x="4" y="34" width="9" height="26" rx="4.5" fill="#e8892b" transform="rotate(25 8 36)"/><rect x="47" y="34" width="9" height="26" rx="4.5" fill="#e8892b" transform="rotate(-25 52 36)"/>
+  <rect x="18" y="62" width="10" height="30" rx="5" fill="#3b4a6b"/><rect x="32" y="62" width="10" height="30" rx="5" fill="#3b4a6b"/>
+  <rect x="14" y="32" width="32" height="36" rx="8" fill="#3f9a5e"/><circle cx="30" cy="20" r="14" fill="#f3d7b9"/>
+  <path d="M16 18Q18 5 30 5Q42 5 44 18Q36 11 30 11Q22 11 16 18Z" fill="#5b3f26"/>
+  <circle cx="25" cy="21" r="2" fill="#222"/><circle cx="35" cy="21" r="2" fill="#222"/><ellipse cx="30" cy="29" rx="3" ry="3.5" fill="#5a1a1a"/>
+ </svg><b>Sheldon</b></span>
+ <span class="cam"><svg viewBox="0 0 60 100">
+  <rect x="4" y="34" width="9" height="26" rx="4.5" fill="#6f86a8" transform="rotate(25 8 36)"/><rect x="47" y="34" width="9" height="26" rx="4.5" fill="#6f86a8" transform="rotate(-25 52 36)"/>
+  <rect x="18" y="62" width="10" height="30" rx="5" fill="#2f3f66"/><rect x="32" y="62" width="10" height="30" rx="5" fill="#2f3f66"/>
+  <rect x="14" y="32" width="32" height="36" rx="8" fill="#6f86a8"/><circle cx="30" cy="20" r="14" fill="#f0d0b0"/>
+  <circle cx="19" cy="12" r="6" fill="#3a2a1c"/><circle cx="30" cy="8" r="7" fill="#3a2a1c"/><circle cx="41" cy="12" r="6" fill="#3a2a1c"/>
+  <circle cx="24" cy="21" r="5" fill="none" stroke="#222" stroke-width="1.6"/><circle cx="36" cy="21" r="5" fill="none" stroke="#222" stroke-width="1.6"/><path d="M29 21h2" stroke="#222" stroke-width="1.6"/>
+  <circle cx="24" cy="21" r="1.6" fill="#222"/><circle cx="36" cy="21" r="1.6" fill="#222"/><ellipse cx="30" cy="30" rx="3" ry="3.5" fill="#5a1a1a"/>
+ </svg><b>Leonard</b></span>
+ <span class="cam"><svg viewBox="0 0 60 100">
+  <rect x="4" y="34" width="9" height="26" rx="4.5" fill="#2f6b78" transform="rotate(25 8 36)"/><rect x="47" y="34" width="9" height="26" rx="4.5" fill="#2f6b78" transform="rotate(-25 52 36)"/>
+  <rect x="18" y="62" width="10" height="30" rx="5" fill="#4a3b5a"/><rect x="32" y="62" width="10" height="30" rx="5" fill="#4a3b5a"/>
+  <rect x="14" y="32" width="32" height="36" rx="8" fill="#2f6b78"/><rect x="26" y="60" width="8" height="6" fill="#d4af37"/>
+  <circle cx="30" cy="20" r="14" fill="#f3d7b9"/><path d="M15 22Q13 3 30 3Q47 3 45 22L42 13Q30 9 18 13Z" fill="#14110f"/>
+  <circle cx="25" cy="22" r="2" fill="#222"/><circle cx="35" cy="22" r="2" fill="#222"/><ellipse cx="30" cy="30" rx="3" ry="3.5" fill="#5a1a1a"/>
+ </svg><b>Howard</b></span>
+ <span class="cam"><svg viewBox="0 0 60 100">
+  <rect x="4" y="34" width="9" height="26" rx="4.5" fill="#c9d6ef" transform="rotate(25 8 36)"/><rect x="47" y="34" width="9" height="26" rx="4.5" fill="#c9d6ef" transform="rotate(-25 52 36)"/>
+  <rect x="18" y="62" width="10" height="30" rx="5" fill="#2a2d3a"/><rect x="32" y="62" width="10" height="30" rx="5" fill="#2a2d3a"/>
+  <rect x="14" y="32" width="32" height="36" rx="8" fill="#c9d6ef"/><circle cx="30" cy="20" r="14" fill="#b98258"/>
+  <path d="M16 20Q16 4 30 4Q44 4 44 20Q38 11 30 11Q22 11 16 20Z" fill="#14110f"/>
+  <circle cx="25" cy="22" r="2" fill="#222"/><circle cx="35" cy="22" r="2" fill="#222"/><ellipse cx="30" cy="30" rx="3" ry="3.5" fill="#5a1a1a"/>
+ </svg><b>Raj</b></span>
 </div>
   <div id="chars" aria-hidden="true">
    <div class="ast"><svg viewBox="0 0 130 150">
@@ -226,6 +258,20 @@
   </div>
 
   <div id="banner">
+     <div id="mor" aria-hidden="true"><svg viewBox="0 0 120 130">
+   <rect x="40" y="88" width="14" height="36" rx="7" fill="#aeb4c4"/><rect x="64" y="88" width="14" height="36" rx="7" fill="#aeb4c4"/>
+   <ellipse cx="50" cy="125" rx="12" ry="5" fill="#8c93a8"/><ellipse cx="74" cy="125" rx="12" ry="5" fill="#8c93a8"/>
+   <ellipse cx="56" cy="66" rx="30" ry="28" fill="#d8dce6" stroke="#8c93a8" stroke-width="1.5"/>
+   <g><animateTransform attributeName="transform" type="rotate" values="-10 72 55;12 72 55;-10 72 55" dur=".5s" repeatCount="indefinite"/>
+    <rect x="70" y="50" width="40" height="11" rx="5.5" fill="#d8dce6" stroke="#8c93a8"/>
+    <path d="M108 50l10 3-8 4zM108 56l11 4-9 3zM108 62l10 5-9 1z" fill="#fff" stroke="#8c93a8" stroke-width=".8"/></g>
+   <circle cx="84" cy="36" r="22" fill="#e6e9f2" stroke="#8c93a8" stroke-width="1.5"/>
+   <path d="M66 22Q72 6 84 12Q96 4 102 22" fill="#fff" stroke="#8c93a8" stroke-width="1.2"/>
+   <circle cx="77" cy="36" r="8" fill="#ffe27a"/><circle cx="79" cy="36" r="3.5" fill="#1a0a05"/>
+   <circle cx="96" cy="34" r="7" fill="#ffe27a"/><circle cx="98" cy="34" r="3" fill="#1a0a05"/>
+   <path d="M74 50Q86 58 98 49" stroke="#3a1010" stroke-width="2" fill="none"/>
+   <path d="M78 51l2 5 2-4 2 5 2-4 2 5 2-4" stroke="#fff" stroke-width="1.6" fill="none"/>
+  </svg></div>
    <h1>Let's talk about the physics.</h1>
    <p>Feel free to reach out. I'm always glad to hear from fellow students and researchers, and I welcome advice and help as I keep learning.</p>
    <div class="icons">
@@ -256,7 +302,9 @@
  var $=function(i){return document.getElementById(i)};
  var sec=$('cj'),cp=sec.querySelector('.cp'),rk=$('crk'),fl=rk.querySelector('.fl'),boom=$('boom'),ring=$('ring'),chars=$('chars'),
   ban=$('banner'),hint=$('chint'),pls=$('planets'),mars=$('mars'),ins=$('inside'),gr=$('ground'),run=$('runner'),wm=$('wmars');
- var a1=$('ali1'),eggs=[].slice.call(document.querySelectorAll('.egg'));
+ var a1=$('ali1'),.cam
+  var a1=$('ali1'),eggs=[].slice.call(document.querySelectorAll('.cam')),mor=$('mor');
+ var K=function(x){return Math.max(-1,Math.min(1,x))};
  var wf=document.createElement('div');
  wf.style.cssText='position:absolute;left:0;top:0;right:0;bottom:0;background:#fff;opacity:0;z-index:8;pointer-events:none';
  cp.appendChild(wf);
@@ -320,19 +368,23 @@
    el.style.opacity=(bp>0&&bp<1)?C(bp*8)*(1-bp):0;
   });
 
-  var ep=C((p-.69)/.12);
+    var ep=C((p-.68)/.16);
   eggs.forEach(function(el,i){
-   var ang=(-165+i*30)*Math.PI/180,dist=ep*big*(.22+.07*(i%3));
-   var ex=tx+Math.cos(ang)*dist,ey=ty+Math.sin(ang)*dist+160*ep*ep;
-   el.style.opacity=C(ep*5)*(1-C((ep-.8)/.2));
-   el.style.transform='translate('+ex+'px,'+ey+'px) translate(-50%,-50%) rotate('+((i%2?1:-1)*240*ep)+'deg)';
+   var ang=(-150+i*40)*Math.PI/180,dist=ep*big*(.28+.06*(i%2));
+   var ex=tx+Math.cos(ang)*dist,ey=ty+Math.sin(ang)*dist+260*ep*ep;
+   el.style.opacity=C(ep*6)*(1-C((ep-.75)/.25));
+   el.style.transform='translate('+ex+'px,'+ey+'px) translate(-50%,-50%)';
+   el.firstElementChild.style.transform='rotate('+((i%2?1:-1)*300*ep)+'deg)';
   });
 
   gr.style.opacity=C((p-.70)/.04);
   var ap=C((p-.74)/.06);
   chars.style.opacity=ap;chars.style.visibility=ap<.01?'hidden':'visible';
-  chars.style.transform='translateY('+((1-ap)*30)+'px)';
-
+  var u=C((p-.78)/.22)*4*Math.PI,amp=Math.max(40,(W-580)/2-20)*C((p-.78)/.04);
+  chars.style.transform='translate('+(Math.sin(u)*amp)+'px,'+((1-ap)*30)+'px) scaleX('+K(Math.cos(u)*3)+')';
+  var mo=C((p-.80)/.03);
+  mor.style.opacity=mo;mor.style.visibility=mo<.01?'hidden':'visible';
+  mor.style.transform='translate('+(W/2+Math.sin(u-.7)*amp-mor.offsetWidth/2)+'px,0) scaleX('+K(Math.cos(u-.7)*3)+')';
   var bn=C((p-.86)/.08);
   ban.style.opacity=bn;ban.style.visibility=bn<.01?'hidden':'visible';
   ban.style.transform='translateY('+((1-bn)*24)+'px)';
