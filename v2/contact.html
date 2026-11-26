@@ -8,33 +8,68 @@
 <link rel="icon" href="logos/favicon.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="logos/favicon.png">
 <style>
-.cj{position:relative;height:700vh}
+.cj{position:relative;height:1000vh}
 .cp{position:sticky;top:0;height:100vh;overflow:hidden}
-#crk{position:absolute;left:0;top:0;width:110px;margin:-80px 0 0 -55px;will-change:transform}
+.cp>*{position:absolute}
+#planets{inset:0;will-change:transform}
+.pl{position:absolute;border-radius:50%}
+.moon{left:62vw;top:62vh;width:8vmin;height:8vmin;background:radial-gradient(circle at 35% 30%,#e8e6e1,#8a8f9a 70%)}
+.earth{left:100vw;top:16vh;width:24vmin;height:24vmin;background:radial-gradient(circle at 30% 30%,#7fd0ff,#1f5fbf 60%,#0a1f55);box-shadow:inset -14px -10px 30px rgba(0,0,0,.5),0 0 40px rgba(111,170,255,.35)}
+.earth::before{content:"";position:absolute;left:22%;top:25%;width:34%;height:28%;border-radius:50% 40% 55% 45%;background:#4cae6a;box-shadow:30px 38px 0 -4px #4cae6a}
+.jup{left:150vw;top:50vh;width:38vmin;height:38vmin;overflow:hidden;background:repeating-linear-gradient(180deg,#c9a27a 0 8%,#e9d3ad 8% 15%,#b57f55 15% 21%,#f0dfc0 21% 30%);box-shadow:inset -24px -16px 50px rgba(0,0,0,.55)}
+.sat{left:205vw;top:16vh;width:20vmin;height:20vmin;background:radial-gradient(circle at 35% 30%,#f2dfae,#c9a766 70%);box-shadow:inset -12px -8px 24px rgba(0,0,0,.5)}
+.sat::before{content:"";position:absolute;left:-45%;right:-45%;top:38%;bottom:38%;border:5px solid rgba(235,214,160,.8);border-radius:50%;transform:rotate(-18deg)}
+#mars{width:min(90vw,90vh);height:min(90vw,90vh);left:calc(80vw - min(45vw,45vh));top:calc(62vh - min(45vw,45vh));border-radius:50%;opacity:0;background:radial-gradient(circle at 30% 28%,#e08a58,#b04a22 55%,#5e220f);box-shadow:inset -40px -30px 90px rgba(0,0,0,.55),0 0 80px rgba(224,120,70,.25)}
+#mars::before{content:"";position:absolute;left:25%;top:40%;width:22%;height:14%;border-radius:50%;background:rgba(80,25,10,.4);box-shadow:120px -70px 0 -6px rgba(80,25,10,.35),40px 90px 0 -2px rgba(80,25,10,.3)}
+#inside{inset:0;opacity:0;z-index:4;background:radial-gradient(ellipse at 50% 38%,#8a1414,#3a0707 65%,#1a0303);overflow:hidden}
+#inside .wall{position:absolute;left:0;right:0;top:0;height:76%;background:repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 2px,transparent 2px 140px)}
+#inside .floor{position:absolute;left:0;right:0;bottom:0;height:24%;background:linear-gradient(#2a0505,#120202);border-top:2px solid rgba(255,120,120,.4)}
+#inside .port{position:absolute;left:50%;top:9vh;width:min(26vmin,220px);height:min(26vmin,220px);margin-left:calc(min(26vmin,220px)/-2);border-radius:50%;background:#05060a;border:6px solid #d4af37;box-shadow:inset 0 0 30px #000}
+#inside .port::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(1.5px 1.5px at 30% 40%,#fff,transparent),radial-gradient(1.5px 1.5px at 70% 60%,#fff,transparent),radial-gradient(1px 1px at 55% 25%,#fff,transparent)}
+#inside .flash{position:absolute;inset:0;background:#ff2a2a;animation:alarm .7s ease-in-out infinite}
+#inside .lamp{position:absolute;top:3vh;width:34px;height:34px;border-radius:50%;background:#ff4040;box-shadow:0 0 40px 14px rgba(255,64,64,.8);animation:alarm .7s ease-in-out infinite}
+#inside .l1{left:6%}#inside .l2{right:6%;animation-delay:.35s}
+#inside .warn{position:absolute;left:0;right:0;top:40vh;text-align:center;color:#ffd9d9;letter-spacing:.3em;font-size:.95rem;text-transform:uppercase;animation:alarm .7s ease-in-out infinite}
+#runner{bottom:1vh;left:0;width:min(17vh,130px);margin:0}
+#runner svg{display:block;width:100%;height:auto;transform-origin:50% 100%}
+#ruL,#ruR,#raL,#raR{transform-box:view-box}
+#ruL{transform-origin:40px 120px}#ruR{transform-origin:60px 120px}#raL{transform-origin:19px 60px}#raR{transform-origin:73px 60px}
+@keyframes alarm{0%,100%{opacity:.12}50%{opacity:.6}}
+#crk{left:0;top:0;width:110px;margin:-80px 0 0 -55px;will-change:transform;z-index:2}
 #crk svg{display:block;width:100%;height:auto}
 #crk .fl{transform-box:fill-box;transform-origin:50% 0}
-#boom{position:absolute;width:200px;height:200px;margin:-100px 0 0 -100px;border-radius:50%;opacity:0;pointer-events:none;background:radial-gradient(circle,#fff 0%,#f5e6b8 25%,#d4af37 50%,rgba(212,175,55,0) 72%);z-index:3}
-#ring{position:absolute;width:200px;height:200px;margin:-100px 0 0 -100px;border-radius:50%;opacity:0;pointer-events:none;border:6px solid #ffb35c;z-index:3}
-#chars{position:absolute;left:0;right:0;bottom:2vh;display:flex;justify-content:center;align-items:flex-end;gap:2.5rem;opacity:0;visibility:hidden;z-index:2}
-#chars svg{height:min(26vh,190px);width:auto;display:block}
+#boom{width:200px;height:200px;margin:-100px 0 0 -100px;border-radius:50%;opacity:0;pointer-events:none;background:radial-gradient(circle,#fff 0%,#f5e6b8 25%,#d4af37 50%,rgba(212,175,55,0) 72%);z-index:6}
+#ring{width:200px;height:200px;margin:-100px 0 0 -100px;border-radius:50%;opacity:0;pointer-events:none;border:6px solid #ffb35c;z-index:6}
+#ground{inset:0;opacity:0;z-index:1;background:linear-gradient(180deg,#1a0d0a 0%,#5a2416 55%,#7d341c 73.9%,#a04524 74%,#7a3118 100%)}
+#ground::before{content:"";position:absolute;left:8%;bottom:6%;width:90px;height:26px;border-radius:50%;background:rgba(60,20,8,.35);box-shadow:520px -10px 0 6px rgba(60,20,8,.3)}
+#chars{left:0;right:0;bottom:2vh;display:flex;justify-content:center;align-items:flex-end;gap:1.4rem;opacity:0;visibility:hidden;z-index:3}
+#chars svg{height:min(24vh,180px);width:auto;display:block}
 .ast svg{transform-origin:50% 100%;animation:sway 1.6s ease-in-out infinite}
-.stars{transform-box:view-box;transform-origin:50px 22px;animation:orbit 2s linear infinite}
-#aw{transform-box:view-box;transform-origin:75px 68px;animation:wave .5s ease-in-out infinite alternate}
+.stars{transform-box:view-box;transform-origin:60px 22px;animation:orbit 2s linear infinite}
+.flag{transform-box:view-box;transform-origin:92px 18px;animation:flut .6s ease-in-out infinite alternate}
+.ali svg{height:min(21vh,150px)}
+.al,.ar{transform-box:view-box}
+.al{transform-origin:28px 76px;animation:wl .55s ease-in-out infinite alternate}
+.ar{transform-origin:72px 76px;animation:wr .55s ease-in-out infinite alternate}
 @keyframes orbit{to{transform:rotate(360deg)}}
 @keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
-@keyframes wave{from{transform:rotate(-25deg)}to{transform:rotate(35deg)}}
-#banner{position:absolute;left:0;right:0;top:10vh;margin:0 auto;width:min(760px,90%);text-align:center;opacity:0;visibility:hidden;z-index:2}
+@keyframes flut{from{transform:scaleX(.8) skewY(-4deg)}to{transform:scaleX(1.1) skewY(4deg)}}
+@keyframes wl{from{transform:rotate(-22deg)}to{transform:rotate(-48deg)}}
+@keyframes wr{from{transform:rotate(22deg)}to{transform:rotate(48deg)}}
+#banner{left:0;right:0;top:8vh;margin:0 auto;width:min(760px,90%);text-align:center;opacity:0;visibility:hidden;z-index:5}
 #banner h1{margin-top:0}
 .icons{display:flex;gap:1rem;justify-content:center;margin-top:1rem}
 .icons a{display:flex;width:52px;height:52px;align-items:center;justify-content:center;border:1px solid #d4af37;border-radius:50%;transition:transform .35s,box-shadow .35s}
 .icons a:hover{transform:translateY(-3px);box-shadow:0 0 22px rgba(255,179,92,.35)}
 .icons svg{width:24px;height:24px}
-#chint{position:absolute;left:0;right:0;bottom:6vh;text-align:center;color:#f2efe8;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase}
+#chint{left:0;right:0;bottom:6vh;text-align:center;color:#f2efe8;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;z-index:2}
+@media(max-width:700px){#chars{gap:.5rem}.ali svg{height:min(17vh,120px)}#chars svg{height:min(19vh,140px)}}
 @media(prefers-reduced-motion:reduce){
  *{animation:none!important;transition:none!important}
  .cj{height:auto}.cp{position:static;height:auto;overflow:visible;padding:2rem 0}
- #crk,#boom,#ring,#chint{display:none}
- #banner,#chars{position:static;opacity:1!important;visibility:visible!important;transform:none!important;margin:1rem auto}
+ .cp>*{position:static}
+ #planets,#mars,#inside,#ground,#crk,#boom,#ring,#chint{display:none}
+ #banner,#chars{opacity:1!important;visibility:visible!important;transform:none!important;margin:1rem auto}
 }
 </style>
 </head><body>
@@ -42,6 +77,9 @@
 
 <section class="cj" id="cj">
  <div class="cp">
+  <div id="ground" aria-hidden="true"></div>
+  <div id="planets" aria-hidden="true"><div class="pl moon"></div><div class="pl earth"></div><div class="pl jup"></div><div class="pl sat"></div></div>
+  <div id="mars" aria-hidden="true"></div>
   <div id="chint">Scroll</div>
 
   <div id="crk" aria-hidden="true">
@@ -56,38 +94,58 @@
    </svg>
   </div>
 
+  <div id="inside" aria-hidden="true">
+   <div class="wall"></div><div class="port"></div><div class="floor"></div>
+   <div class="flash"></div><div class="lamp l1"></div><div class="lamp l2"></div>
+   <div class="warn">Engine offline</div>
+   <div id="runner"><svg viewBox="0 0 100 200">
+    <circle cx="50" cy="8" r="9" fill="#0b0b0f"/><ellipse cx="50" cy="28" rx="19" ry="20" fill="#0b0b0f"/>
+    <rect x="45" y="44" width="10" height="10" fill="#8d5a3b"/><circle cx="50" cy="31" r="15" fill="#8d5a3b"/>
+    <path d="M35 28Q36 14 50 14Q64 14 65 28Q58 20 50 20Q42 20 35 28Z" fill="#0b0b0f"/>
+    <circle cx="44" cy="31" r="2" fill="#fff"/><circle cx="56" cy="31" r="2" fill="#fff"/><ellipse cx="50" cy="40" rx="3" ry="3.6" fill="#3a1010"/>
+    <g id="ruL"><rect x="34" y="120" width="13" height="72" rx="6" fill="#0b0b0f" stroke="#55607d" stroke-width="1.2"/></g>
+    <g id="ruR"><rect x="53" y="120" width="13" height="72" rx="6" fill="#0b0b0f" stroke="#55607d" stroke-width="1.2"/></g>
+    <path d="M26 56Q50 46 74 56L78 124H22Z" fill="#17306b" stroke="#6f86c4" stroke-width="1.4"/>
+    <path d="M43 52L50 70L57 52Z" fill="#f5f1e8"/><path d="M40 52L50 82L60 52" fill="none" stroke="#d4af37" stroke-width="1.6"/>
+    <g id="raL"><rect x="14" y="58" width="10" height="38" rx="5" fill="#17306b" stroke="#6f86c4" stroke-width="1.2"/><circle cx="19" cy="99" r="5.5" fill="#8d5a3b"/></g>
+    <g id="raR"><rect x="68" y="58" width="10" height="38" rx="5" fill="#17306b" stroke="#6f86c4" stroke-width="1.2"/><circle cx="73" cy="99" r="5.5" fill="#8d5a3b"/></g>
+   </svg></div>
+  </div>
+
   <div id="boom"></div><div id="ring"></div>
 
   <div id="chars" aria-hidden="true">
-   <div class="ast"><svg viewBox="0 0 100 150">
-    <g class="stars"><circle cx="82" cy="22" r="3" fill="#d4af37"/><circle cx="34" cy="8" r="3" fill="#d4af37"/><circle cx="34" cy="36" r="3" fill="#d4af37"/></g>
-    <rect x="12" y="68" width="12" height="40" rx="6" fill="#2a2d3a"/><rect x="76" y="68" width="12" height="40" rx="6" fill="#2a2d3a"/>
-    <rect x="34" y="108" width="14" height="36" rx="5" fill="#2a2d3a"/><rect x="52" y="108" width="14" height="36" rx="5" fill="#2a2d3a"/>
-    <path d="M24 64Q50 54 76 64L78 112L70 106L62 114L54 107L46 114L38 106L30 113L22 108Z" fill="#3a3d4d" stroke="#6f86c4" stroke-width="1.2"/>
-    <circle cx="38" cy="82" r="7" fill="#14151c" opacity=".7"/><circle cx="62" cy="96" r="9" fill="#14151c" opacity=".7"/>
-    <circle cx="50" cy="34" r="24" fill="#cfcac0" stroke="#6f86c4" stroke-width="1.5"/>
-    <ellipse cx="50" cy="36" rx="15" ry="12" fill="#0a1530"/>
-    <path d="M44 28L50 36L47 42" fill="none" stroke="#d4af37" stroke-width="1.2"/>
-    <circle cx="36" cy="22" r="6" fill="#14151c" opacity=".45"/><circle cx="66" cy="44" r="5" fill="#14151c" opacity=".4"/>
+   <div class="ast"><svg viewBox="0 0 130 150">
+    <g transform="translate(10,0)">
+     <g class="stars"><circle cx="84" cy="22" r="3" fill="#d4af37"/><circle cx="36" cy="8" r="3" fill="#d4af37"/><circle cx="36" cy="36" r="3" fill="#d4af37"/></g>
+     <rect x="12" y="68" width="12" height="40" rx="6" fill="#2a2d3a"/><rect x="76" y="68" width="12" height="40" rx="6" fill="#2a2d3a"/>
+     <rect x="34" y="108" width="14" height="36" rx="5" fill="#2a2d3a"/><rect x="52" y="108" width="14" height="36" rx="5" fill="#2a2d3a"/>
+     <path d="M24 64Q50 54 76 64L78 112L70 106L62 114L54 107L46 114L38 106L30 113L22 108Z" fill="#3a3d4d" stroke="#6f86c4" stroke-width="1.2"/>
+     <circle cx="38" cy="82" r="7" fill="#14151c" opacity=".7"/><circle cx="62" cy="96" r="9" fill="#14151c" opacity=".7"/>
+     <circle cx="50" cy="34" r="24" fill="#cfcac0" stroke="#6f86c4" stroke-width="1.5"/>
+     <ellipse cx="50" cy="36" rx="15" ry="12" fill="#0a1530"/><path d="M44 28L50 36L47 42" fill="none" stroke="#d4af37" stroke-width="1.2"/>
+     <circle cx="36" cy="22" r="6" fill="#14151c" opacity=".45"/><circle cx="66" cy="44" r="5" fill="#14151c" opacity=".4"/>
+    </g>
+    <line x1="102" y1="106" x2="102" y2="12" stroke="#d8d2c4" stroke-width="2.5" stroke-linecap="round"/>
+    <path class="flag" d="M102 14Q114 9 124 15Q114 21 124 28Q114 24 102 28Z" fill="#fff"/>
    </svg></div>
-   <div class="ali"><svg viewBox="0 0 100 150">
+   <div class="ali" id="ali1"><svg viewBox="0 0 100 150">
+    <g class="al"><rect x="23" y="40" width="10" height="38" rx="5" fill="#7bd88f"/><circle cx="28" cy="40" r="6" fill="#7bd88f"/></g>
+    <g class="ar"><rect x="67" y="40" width="10" height="38" rx="5" fill="#7bd88f"/><circle cx="72" cy="40" r="6" fill="#7bd88f"/></g>
     <path d="M38 18Q34 6 28 4M62 18Q66 6 72 4" stroke="#7bd88f" stroke-width="3" fill="none"/>
     <circle cx="28" cy="4" r="4" fill="#d4af37"/><circle cx="72" cy="4" r="4" fill="#d4af37"/>
     <rect x="34" y="108" width="12" height="34" rx="5" fill="#5cc472"/><rect x="54" y="108" width="12" height="34" rx="5" fill="#5cc472"/>
-    <rect x="14" y="68" width="10" height="34" rx="5" fill="#7bd88f"/>
     <path d="M30 66Q50 56 70 66L72 112H28Z" fill="#17306b" stroke="#6f86c4" stroke-width="1.2"/>
     <ellipse cx="50" cy="38" rx="30" ry="26" fill="#7bd88f"/>
     <ellipse cx="38" cy="38" rx="7" ry="10" transform="rotate(-20 38 38)" fill="#0a1530"/>
     <ellipse cx="62" cy="38" rx="7" ry="10" transform="rotate(20 62 38)" fill="#0a1530"/>
     <path d="M42 54Q50 60 58 54" fill="none" stroke="#0a1530" stroke-width="2"/>
-    <g id="aw"><rect x="70" y="64" width="10" height="36" rx="5" fill="#7bd88f"/></g>
    </svg></div>
   </div>
 
   <div id="banner">
    <h1>Let's talk about the physics.</h1>
    <p>Feel free to reach out. I'm always glad to hear from fellow students and researchers, and I welcome advice and help as I keep learning.</p>
-   <p><a href="mailto:copelandmiya958@gmail.com">copelandmiya958@gmail.com</a></p>
    <div class="icons">
     <a href="https://www.linkedin.com/in/miyauna-copeland-aa10552ab/" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="4" fill="none" stroke="#f5f1e8" stroke-width="1.6"/><text x="12" y="17.5" text-anchor="middle" font-size="13" font-weight="700" fill="#f5f1e8" font-family="Arial,sans-serif">in</text></svg></a>
     <a href="mailto:copelandmiya958@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="2" y="4.5" width="20" height="15" rx="2.5" fill="none" stroke="#f5f1e8" stroke-width="1.6"/><path d="M3 7l9 7 9-7" fill="none" stroke="#f5f1e8" stroke-width="1.6"/></svg></a>
@@ -112,47 +170,70 @@
 
 <script>
 (function(){
- var C=function(x){return Math.max(0,Math.min(1,x))};
- var sec=document.getElementById('cj'),rk=document.getElementById('crk'),fl=rk.querySelector('.fl'),
-  boom=document.getElementById('boom'),ring=document.getElementById('ring'),
-  chars=document.getElementById('chars'),ban=document.getElementById('banner'),hint=document.getElementById('chint');
- function run(){
+ var C=function(x){return Math.max(0,Math.min(1,x))},D=180/Math.PI;
+ var $=function(i){return document.getElementById(i)};
+ var sec=$('cj'),rk=$('crk'),fl=rk.querySelector('.fl'),boom=$('boom'),ring=$('ring'),chars=$('chars'),
+  ban=$('banner'),hint=$('chint'),pls=$('planets'),mars=$('mars'),ins=$('inside'),gr=$('ground'),run=$('runner');
+ var a1=$('ali1');
+ [.18,.36].forEach(function(d,i){var c=a1.cloneNode(true);c.id='ali'+(i+2);
+  [].forEach.call(c.querySelectorAll('.al,.ar'),function(g){g.style.animationDelay=(-d)+'s'});
+  c.querySelector('svg').style.height='min('+(i?19:23)+'vh,'+(i?135:165)+'px)';
+  chars.appendChild(c);});
+ var legs=['ruL','ruR','raL','raR'].map($);
+ function frame(){
   var W=innerWidth,H=innerHeight;
   var p=C(-sec.getBoundingClientRect().top/(sec.offsetHeight-H));
-  var om=4*Math.PI,a=.7*W,b=a/om*1.6,x0=.12*W,y0=H*.55,gy=H*.8;
-  var x,y,rot,fs,t,q;
-  if(p<.45){
-   t=p/.45;
+  var x,y,rot,fs=0,show=0;
+
+  var om=4*Math.PI,a=.6*W,b=a/om*1.6,x0=.12*W,y0=H*.55;
+  if(p<.35){
+   var t=p/.35;
    x=x0+a*t+b*Math.sin(om*t);y=y0+b*(Math.cos(om*t)-1);
-   rot=Math.atan2(-b*om*Math.sin(om*t),a+b*om*Math.cos(om*t))*180/Math.PI+90;
-   fs=1.3+.4*Math.sin(p*300);
-  }else{
-   q=C((p-.45)/.15);
-   x=x0+a+W*.04*q;y=y0+(gy-y0)*q*q;
-   rot=90+110*q+Math.sin(q*40)*12*q;fs=.5+.8*Math.abs(Math.sin(q*50));
+   rot=Math.atan2(-b*om*Math.sin(om*t),a+b*om*Math.cos(om*t))*D+90;
+   fs=Math.max(0,1.6*(1-C(t/.92)))*(.8+.2*Math.abs(Math.sin(p*300)));
+   show=1;
   }
-  rk.style.transform='translate('+x+'px,'+y+'px) rotate('+rot+'deg)';
-  rk.style.opacity=p<.60?1:0;
-  fl.style.transform='scaleY('+fs+')';
+  var mr=Math.min(W,H)*.45,mx=W*.8,my=H*.62,tx=mx-mr*.8,ty=my+mr*.25;
+  if(p>=.55&&p<.67){
+   var q=C((p-.55)/.12),sx=-.1*W,sy=.2*H;
+   x=sx+(tx-sx)*q;y=sy+(ty-sy)*q*q;
+   rot=Math.atan2(2*(ty-sy)*q,tx-sx)*D+90+Math.sin(q*30)*8;fs=.001;show=1;
+  }
+  rk.style.opacity=show;
+  if(show){rk.style.transform='translate('+x+'px,'+y+'px) rotate('+rot+'deg)';fl.style.transform='scaleY('+fs+')';}
 
-  var bp=C((p-.60)/.14),bx=x0+a+W*.04,env=Math.sin(Math.PI*Math.pow(bp,.6)),big=Math.max(W,H);
-  boom.style.left=bx+'px';boom.style.top=gy+'px';
-  boom.style.opacity=(bp>0&&bp<1)?env:0;
-  boom.style.transform='scale('+(.2+bp*big/80)+')';
-  ring.style.left=bx+'px';ring.style.top=gy+'px';
-  ring.style.opacity=(bp>0&&bp<1)?env*.8:0;
-  ring.style.transform='scale('+(.2+bp*big/50)+')';
+  pls.style.transform='translateX('+(-2*W*C(p/.35))+'px)';
+  pls.style.opacity=1-C((p-.35)/.03);
 
-  var ap=C((p-.66)/.08);
+  ins.style.opacity=C((p-.36)/.03)*(1-C((p-.54)/.03));
+  var u=C((p-.36)/.19)*3,xf=Math.abs((u%2)-1),ph=p*900;
+  run.style.transform='translateX('+(W*.08+xf*(W*.84-run.offsetWidth))+'px)';
+  run.firstElementChild.style.transform='rotate('+(Math.sin(ph*.5)*4)+'deg)';
+  legs[0].style.transform='rotate('+(Math.sin(ph)*35)+'deg)';
+  legs[1].style.transform='rotate('+(-Math.sin(ph)*35)+'deg)';
+  legs[2].style.transform='rotate('+(-Math.sin(ph)*45)+'deg)';
+  legs[3].style.transform='rotate('+(Math.sin(ph)*45)+'deg)';
+
+  mars.style.opacity=C((p-.54)/.03)*(1-C((p-.72)/.03));
+  mars.style.transform='scale('+(.3+.7*C((p-.54)/.11))+')';
+
+  var bp=C((p-.67)/.12),env=Math.sin(Math.PI*Math.pow(bp,.6)),big=Math.max(W,H);
+  boom.style.left=tx+'px';boom.style.top=ty+'px';
+  boom.style.opacity=(bp>0&&bp<1)?env:0;boom.style.transform='scale('+(.2+bp*big/80)+')';
+  ring.style.left=tx+'px';ring.style.top=ty+'px';
+  ring.style.opacity=(bp>0&&bp<1)?env*.8:0;ring.style.transform='scale('+(.2+bp*big/50)+')';
+
+  gr.style.opacity=C((p-.70)/.04);
+  var ap=C((p-.74)/.06);
   chars.style.opacity=ap;chars.style.visibility=ap<.01?'hidden':'visible';
   chars.style.transform='translateY('+((1-ap)*30)+'px)';
 
-  var bn=C((p-.78)/.10);
+  var bn=C((p-.86)/.08);
   ban.style.opacity=bn;ban.style.visibility=bn<.01?'hidden':'visible';
   ban.style.transform='translateY('+((1-bn)*24)+'px)';
-  hint.style.opacity=1-C(p/.04);
+  hint.style.opacity=1-C(p/.03);
  }
- addEventListener('scroll',run,{passive:true});addEventListener('resize',run);run();
+ addEventListener('scroll',frame,{passive:true});addEventListener('resize',frame);frame();
 })();
 </script>
 </body></html>
