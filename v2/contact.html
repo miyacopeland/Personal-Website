@@ -56,7 +56,10 @@
 @keyframes wl{from{transform:rotate(-22deg)}to{transform:rotate(-48deg)}}
 @keyframes wr{from{transform:rotate(22deg)}to{transform:rotate(48deg)}}
 @keyframes hop{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes munch{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
 #chars .ast,#chars .ali,#chars .bbt{animation:hop .45s ease-in-out infinite}
+#chars.stand .ast,#chars.stand .ali,#chars.stand .bbt{animation:none}
+#chars.sit .ast,#chars.sit .ali,#chars.sit .bbt{animation:munch .7s ease-in-out infinite}
 #banner{left:0;right:0;top:8vh;margin:0 auto;width:min(760px,90%);text-align:center;opacity:0;visibility:hidden;z-index:5}
 #banner h1{margin-top:0}
 .icons{display:flex;gap:1rem;justify-content:center;margin-top:1rem}
@@ -80,9 +83,11 @@
 #mor{left:0;bottom:5vh;width:min(24vh,190px);opacity:0;visibility:hidden;z-index:2;pointer-events:none}
 #mor svg{display:block;width:100%;height:auto;overflow:visible;animation:hop .4s ease-in-out infinite}
 #mor.stand svg{animation:none}
-#msit{left:calc(50% - min(12vh,95px));bottom:5vh;width:min(24vh,190px);opacity:0;visibility:hidden;z-index:2;pointer-events:none}
+#msit{left:0;bottom:5vh;width:min(44.8vh,355px);opacity:0;visibility:hidden;z-index:2;pointer-events:none}
 #msit svg{display:block;width:100%;height:auto;overflow:visible}
-#ship{left:calc(50% - min(7vh,50px));bottom:11vh;width:min(14vh,100px);z-index:1;visibility:hidden;pointer-events:none}
+#feast{left:0;bottom:.5vh;width:min(700px,90vw);opacity:0;visibility:hidden;z-index:4;pointer-events:none}
+#feast svg{display:block;width:100%;height:auto}
+#ship{left:calc(50% - min(9vh,64px));bottom:17vh;width:min(18vh,128px);z-index:1;visibility:hidden;pointer-events:none}
 #ship svg{display:block;width:100%;height:auto;overflow:visible}
 #clk{left:0;top:0;width:38px;opacity:0;z-index:4;pointer-events:none}
 #clk svg{display:block;width:100%;height:auto}
@@ -91,7 +96,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88
  *{animation:none!important;transition:none!important}
  .cj{height:auto}.cp{position:static;height:auto;overflow:visible;padding:2rem 0}
  .cp>*{position:static}
- #planets,#mars,#inside,#ground,#crk,#boom,#ring,#chint,#eggs,#mor,#msit,#ship,#clk{display:none}
+ #planets,#mars,#inside,#ground,#crk,#boom,#ring,#chint,#eggs,#mor,#msit,#feast,#ship,#clk{display:none}
  #banner,#chars{opacity:1!important;visibility:visible!important;transform:none!important;margin:1rem auto}
 }
 </style>
@@ -240,6 +245,27 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88
    </svg></div>
   </div>
 
+  <div id="feast" aria-hidden="true"><svg viewBox="0 0 700 64">
+   <g transform="translate(24,14)"><path d="M0 0h32l-5 38h-22z" fill="#fff" stroke="#d94f4f" stroke-width="2"/><path d="M1 0q5-8 10 0t10 0t10 0" stroke="#f4c542" stroke-width="3" fill="none"/></g>
+   <ellipse cx="130" cy="54" rx="30" ry="8" fill="#fff" stroke="#aab4cc"/>
+   <path d="M108 50q6-9 12 0t12 0t12 0t8 0" stroke="#e8a33d" stroke-width="4" fill="none" stroke-linecap="round"/>
+   <circle cx="152" cy="47" r="4" fill="#7bd88f"/><circle cx="118" cy="46" r="3" fill="#ff9a7a"/>
+   <path d="M200 40h52q-2 20-26 20t-26-20z" fill="#c0392b"/><ellipse cx="226" cy="40" rx="26" ry="5" fill="#e8892b"/>
+   <path d="M220 34q-4-7 0-12t0-9" stroke="#fff" stroke-width="2" fill="none" opacity=".55"><animate attributeName="opacity" values=".15;.6;.15" dur="1.6s" repeatCount="indefinite"/></path>
+   <ellipse cx="320" cy="56" rx="30" ry="7" fill="#fff" stroke="#aab4cc"/>
+   <rect x="300" y="44" width="30" height="9" rx="4.5" fill="#d49a3a"/><rect x="306" y="36" width="30" height="9" rx="4.5" fill="#c98a2e"/>
+   <circle cx="342" cy="52" r="4" fill="#d94f4f"/>
+   <g stroke="#c9a766" stroke-width="2" stroke-linecap="round"><line x1="392" y1="60" x2="424" y2="18"/><line x1="402" y1="60" x2="434" y2="26"/></g>
+   <g fill="#8a4a2a"><circle cx="402" cy="46" r="4"/><circle cx="410" cy="36" r="4"/><circle cx="418" cy="26" r="4"/><circle cx="414" cy="48" r="4"/><circle cx="422" cy="38" r="4"/></g>
+   <ellipse cx="500" cy="56" rx="30" ry="7" fill="#fff" stroke="#aab4cc"/>
+   <ellipse cx="494" cy="48" rx="16" ry="9" fill="#f5f1e8"/><path d="M508 46q10-6 18 2q-8 8-18-2z" fill="#f4b942"/>
+   <path d="M572 16h26l-4 44h-18z" fill="#e8892b" stroke="#fff" stroke-width="1.5"/>
+   <line x1="590" y1="16" x2="596" y2="2" stroke="#fff" stroke-width="2"/>
+   <path d="M638 40h44q-2 20-22 20t-22-20z" fill="#d94f4f"/><ellipse cx="660" cy="40" rx="22" ry="5" fill="#f08a3a"/>
+   <circle cx="652" cy="39" r="3" fill="#ff9a7a"/><circle cx="668" cy="40" r="3" fill="#7bd88f"/>
+   <path d="M656 34q-4-7 0-12t0-9" stroke="#fff" stroke-width="2" fill="none" opacity=".55"><animate attributeName="opacity" values=".15;.6;.15" dur="1.9s" repeatCount="indefinite"/></path>
+  </svg></div>
+
   <div id="mor" aria-hidden="true"><svg viewBox="0 0 120 130">
    <rect x="40" y="88" width="14" height="36" rx="7" fill="#aeb4c4"/><rect x="64" y="88" width="14" height="36" rx="7" fill="#aeb4c4"/>
    <ellipse cx="50" cy="125" rx="12" ry="5" fill="#8c93a8"/><ellipse cx="74" cy="125" rx="12" ry="5" fill="#8c93a8"/>
@@ -259,8 +285,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88
    </g>
   </svg></div>
 
-  <div id="msit" aria-hidden="true"><svg viewBox="0 0 150 120">
-   <ellipse cx="78" cy="114" rx="60" ry="6" fill="rgba(0,0,0,.3)"/>
+  <div id="msit" aria-hidden="true"><svg viewBox="0 0 280 120">
+   <ellipse cx="140" cy="114" rx="130" ry="6" fill="rgba(0,0,0,.3)"/>
    <ellipse cx="124" cy="104" rx="15" ry="8" fill="#aeb4c4" stroke="#8c93a8"/>
    <ellipse cx="94" cy="100" rx="30" ry="11" fill="#d8dce6" stroke="#8c93a8" stroke-width="1.4"/>
    <ellipse cx="58" cy="78" rx="30" ry="30" fill="#d8dce6" stroke="#8c93a8" stroke-width="1.5"/>
@@ -277,6 +303,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88
    <g><animateTransform attributeName="transform" type="translate" values="0 0;-3 -8;0 0" dur=".9s" repeatCount="indefinite"/>
     <line x1="108" y1="72" x2="94" y2="50" stroke="#c9a766" stroke-width="2.2" stroke-linecap="round"/>
     <line x1="113" y1="72" x2="97" y2="49" stroke="#c9a766" stroke-width="2.2" stroke-linecap="round"/></g>
+   <ellipse cx="172" cy="96" rx="20" ry="5" fill="#fff" stroke="#aab4cc"/>
+   <rect x="158" y="88" width="20" height="7" rx="3.5" fill="#d49a3a"/><rect x="170" y="86" width="20" height="7" rx="3.5" fill="#c98a2e" transform="rotate(-12 180 90)"/>
+   <circle cx="190" cy="96" r="3" fill="#d94f4f"/>
+   <ellipse cx="178" cy="109" rx="24" ry="6" fill="#fff" stroke="#aab4cc"/>
+   <path d="M160 105q5-8 10 0t10 0t10 0" stroke="#e8a33d" stroke-width="4" fill="none" stroke-linecap="round"/>
+   <circle cx="196" cy="104" r="3.5" fill="#7bd88f"/>
+   <path d="M208 98h36q-2 14-18 14t-18-14z" fill="#c0392b"/><ellipse cx="226" cy="98" rx="18" ry="4" fill="#e8892b"/>
+   <path d="M222 92q-3-6 0-10t0-8" stroke="#fff" stroke-width="2" fill="none" opacity=".5"><animate attributeName="opacity" values=".1;.6;.1" dur="1.5s" repeatCount="indefinite"/></path>
+   <path d="M246 90h12l-2 20h-8z" fill="#e8892b" stroke="#fff" stroke-width="1"/>
+   <line x1="252" y1="90" x2="255" y2="76" stroke="#fff" stroke-width="1.8"/>
+   <g stroke="#c9a766" stroke-width="2" stroke-linecap="round"><line x1="262" y1="112" x2="272" y2="82"/><line x1="268" y1="114" x2="277" y2="90"/></g>
+   <g fill="#8a4a2a"><circle cx="266" cy="100" r="3.6"/><circle cx="269" cy="92" r="3.6"/><circle cx="272" cy="102" r="3.6"/><circle cx="275" cy="96" r="3.6"/></g>
   </svg></div>
 
   <div id="ship" aria-hidden="true"><svg viewBox="0 0 100 152">
@@ -334,7 +372,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88
  var $=function(i){return document.getElementById(i)};
  var sec=$('cj'),cp=sec.querySelector('.cp'),rk=$('crk'),fl=rk.querySelector('.fl'),boom=$('boom'),ring=$('ring'),chars=$('chars'),
   ban=$('banner'),hint=$('chint'),pls=$('planets'),mars=$('mars'),ins=$('inside'),gr=$('ground'),run=$('runner'),wm=$('wmars'),
-  mor=$('mor'),mst=$('mstars'),msit=$('msit'),ship=$('ship'),sfl=$('sfl'),clk=$('clk');
+  mor=$('mor'),mst=$('mstars'),msit=$('msit'),feast=$('feast'),ship=$('ship'),sfl=$('sfl'),clk=$('clk');
  var a1=$('ali1'),camEls=[].slice.call(document.querySelectorAll('.cam')),eggs=camEls;
  var wf=document.createElement('div');
  wf.style.cssText='position:absolute;left:0;top:0;right:0;bottom:0;background:#fff;opacity:0;z-index:8;pointer-events:none';
@@ -354,13 +392,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88
  var legs=['ruL','ruR','raL','raR'].map($);
  var P=0,t0=null,done=false;
 
- function gx(T,amp){
+ function gx(T,amp,sx){
   var v=2*amp/2.4;
   if(T<2.4)return -amp+v*T;
   if(T<4.8)return amp-v*(T-2.4);
   if(T<5.7)return -amp;
-  if(T<7)return -amp+amp*(T-5.7)/1.3;
-  return 0;
+  if(T<7)return -amp+(sx+amp)*(T-5.7)/1.3;
+  return sx;
  }
 
  function frame(){
@@ -436,37 +474,48 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88
 
  function tick(now){
   var W=innerWidth,H=innerHeight,amp=Math.max(30,(W-720)/2-20),L=1.7;
+  var sx=-Math.min(130,Math.max(0,(W-900)/2));
   if(P<.70){t0=null;done=false;}
   else if(P>=.80&&t0===null&&!done)t0=now;
   var T=done?20:(t0===null?-1:(now-t0)/1000);
-  if(!done&&T>9.5){done=true;T=20;}
+  if(!done&&T>10.2){done=true;T=20;}
 
   var ap=C((P-.74)/.06),Tg=Math.max(T,0);
   var face=Tg<3.6?K(6*(2.4-Tg)):K(6*(Tg-4.8));
-  var bd=C((T-7)/.6),cf=1-C((bd-.7)/.3),sc=1-.85*bd;
-  chars.style.opacity=ap*cf;
-  chars.style.visibility=(ap<.01||cf<.01)?'hidden':'visible';
-  chars.style.transform='translate('+gx(Tg,amp)+'px,'+((1-ap)*30-(.09*H+30)*bd)+'px) scale('+(face*sc)+','+sc+')';
+  var sit=C((T-9.3)/.5);
+  chars.classList.toggle('stand',T>=7&&T<9.3);
+  chars.classList.toggle('sit',T>=9.3);
+  chars.style.opacity=ap;
+  chars.style.visibility=ap<.01?'hidden':'visible';
+  chars.style.transform='translate('+gx(Tg,amp,sx)+'px,'+((1-ap)*30)+'px) scale('+face+','+(1-.22*sit)+')';
 
-  var hitX=gx(3.9,amp),mxv,mf,rotm=0,dz=false;
-  if(T<5.6){var Tm=T-L;mxv=gx(Tm,amp);mf=Tm<3.6?K(6*(2.4-Tm)):K(6*(Tm-4.8));}
+  var mw=msit.offsetWidth||355;
+  var Mx=Math.min(sx+345+.46*mw+95,W/2-110);
+  var hitX=gx(3.9,amp,sx),mxv,mf,rotm=0,dz=false;
+  if(T<5.6){var Tm=T-L;mxv=gx(Tm,amp,sx);mf=Tm<3.6?K(6*(2.4-Tm)):K(6*(Tm-4.8));}
   else if(T<7.6){mxv=hitX;mf=-1;dz=true;rotm=Math.sin(T*9)*7;}
-  else{mxv=hitX*(1-C((T-7.6)/.7));mf=K(6*(T-7.7));}
+  else if(T<9){mxv=hitX*(1-C((T-7.6)/.7));mf=K(6*(T-7.7));}
+  else{mxv=Mx*C((T-9)/.7);mf=K(6*(T-7.7))*(1-2*C((T-9.4)/.1));}
   var jy=(T>8.3&&T<9)?-Math.sin((T-8.3)/.7*Math.PI)*110:0;
-  var mo=T<0?0:1-C((T-9.1)/.2);
+  var mo=T<0?0:1-C((T-9.5)/.2);
   mor.classList.toggle('stand',dz);
   mor.style.opacity=mo;mor.style.visibility=mo<.01?'hidden':'visible';
   mor.style.transform='translate('+(W/2+mxv-mor.offsetWidth/2)+'px,'+jy+'px) rotate('+rotm+'deg) scale('+(mf*.92)+',.92)';
   mst.style.opacity=dz?1:0;
 
-  var so=done?C((P-.72)/.04):(T<9.2?0:C((T-9.2)/.3));
+  var so=(done?1:(T<9.5?0:C((T-9.5)/.3)))*ap;
   msit.style.opacity=so;msit.style.visibility=so<.01?'hidden':'visible';
+  msit.style.transform='translate('+(W/2+Mx-.73*mw)+'px,0) scaleX(-1)';
+
+  var fo=(done?1:C((T-9.3)/.5))*ap,fw=feast.offsetWidth||700;
+  feast.style.opacity=fo;feast.style.visibility=fo<.01?'hidden':'visible';
+  feast.style.transform='translate('+(W/2+sx-fw/2)+'px,0)';
 
   var s=C((T-2.6)/2);
   var sy=T<2.6?-(H+400):(T<7.6?-(H+400)*Math.pow(1-s,3):-Math.pow(T-7.6,2)*520);
-  ship.style.visibility=(T>=2.5&&T<9.8)?'visible':'hidden';
+  ship.style.visibility=(T>=2.5&&T<9.4)?'visible':'hidden';
   ship.style.transform='translateY('+sy+'px)';
-  sfl.style.opacity=((T>=2.6&&T<4.8)||(T>=7.5&&T<9.8))?1:0;
+  sfl.style.opacity=((T>=2.6&&T<4.8)||(T>=7.5&&T<9.4))?1:0;
 
   var cu=C((T-5)/.6),sx0=W/2-amp-152,sy0=H*.98-110,ex=W/2+hitX,ey=H*.95-90;
   clk.style.opacity=(T>=5&&T<5.6)?1:0;
