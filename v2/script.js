@@ -5,7 +5,7 @@ if(svg){
   for(let x=0;x<=360;x++){
     let a,ph;
     if(x<=260){const u=x/260;a=6+70*u**3.4;ph=14*u**2.2*Math.PI}
-else{const k=(x-260)/100;a=46*Math.exp(-5*k);ph=14*Math.PI+k*12}
+    else{const k=(x-260)/100;a=46*Math.exp(-5*k);ph=14*Math.PI+k*12}
     d+=(x?'L':'M')+(x+10)+' '+(100-a*Math.sin(ph)).toFixed(1);
   }
   p.setAttribute('d',d);
@@ -19,8 +19,8 @@ else{const k=(x-260)/100;a=46*Math.exp(-5*k);ph=14*Math.PI+k*12}
     p.style.transition='none';p.style.strokeDasharray=L;p.style.strokeDashoffset=L;
     m.style.transition='none';t.style.transition='none';m.style.opacity=0;t.style.opacity=0;
     void p.getBoundingClientRect();
-p.style.transition='stroke-dashoffset 4.5s cubic-bezier(.5,0,.3,1)';    
-    timer=setTimeout(()=>{m.style.transition='opacity .5s';t.style.transition='opacity .5s';m.style.opacity=1;t.style.opacity=1;busy=false},1700);
+    p.style.transition='stroke-dashoffset 4.5s cubic-bezier(.5,0,.3,1)';p.style.strokeDashoffset=0;
+    timer=setTimeout(()=>{m.style.transition='opacity .5s';t.style.transition='opacity .5s';m.style.opacity=1;t.style.opacity=1;busy=false},4200);
   }
   play();
   svg.addEventListener('mouseenter',()=>{if(!busy)play()});
