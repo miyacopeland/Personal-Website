@@ -112,7 +112,9 @@
     <path class="fl" d="M38 94Q45 126 52 94Z" fill="#d4af37"/>
    </svg>
   </div>
-
+  <div id="inside" aria-hidden="true">
+   <div class="wall"></div><div class="port"></div><div class="floor"></div>
+   <div class="flash"></div><div class="lamp l1"></div><div class="lamp l2"></div>
 <div class="console">
  <div class="btns"><i></i><i></i><i></i><i></i><i></i></div>
  <div class="scr s1"><b>Fuel</b><i class="bar"><u></u></i><span>0%</span></div>
@@ -141,6 +143,7 @@
  <path d="M36 24Q42 18 50 18" fill="none" stroke="#fff" stroke-width="2" opacity=".55" stroke-linecap="round"/>
  <ellipse class="rf" cx="58" cy="38" rx="6" ry="4" fill="#ff4040"/>
 </svg></div></div>
+   </svg></div></div>
   <div id="boom"></div><div id="ring"></div>
 <div id="eggs" aria-hidden="true">
  <span class="egg">Bazinga!</span>
@@ -218,13 +221,6 @@
   chars.appendChild(c);});
  var legs=['ruL','ruR','raL','raR'].map($);
  function frame(){
-    var ep=C((p-.67)/.13);
-  eggs.forEach(function(el,i){
-   var ang=(-165+i*30)*Math.PI/180,dist=ep*Math.max(W,H)*(.22+.07*(i%3));
-   var ex=tx+Math.cos(ang)*dist,ey=ty+Math.sin(ang)*dist+160*ep*ep;
-   el.style.opacity=C(ep*5)*(1-C((ep-.8)/.2));
-   el.style.transform='translate('+ex+'px,'+ey+'px) translate(-50%,-50%) rotate('+((i%2?1:-1)*240*ep)+'deg)';
-  });
   var W=innerWidth,H=innerHeight;
   var p=C(-sec.getBoundingClientRect().top/(sec.offsetHeight-H));
   var x,y,rot,fs=0,show=0;
@@ -267,7 +263,13 @@
   boom.style.opacity=(bp>0&&bp<1)?env:0;boom.style.transform='scale('+(.2+bp*big/80)+')';
   ring.style.left=tx+'px';ring.style.top=ty+'px';
   ring.style.opacity=(bp>0&&bp<1)?env*.8:0;ring.style.transform='scale('+(.2+bp*big/50)+')';
-
+  var ep=C((p-.67)/.13);
+  eggs.forEach(function(el,i){
+   var ang=(-165+i*30)*Math.PI/180,dist=ep*Math.max(W,H)*(.22+.07*(i%3));
+   var ex=tx+Math.cos(ang)*dist,ey=ty+Math.sin(ang)*dist+160*ep*ep;
+   el.style.opacity=C(ep*5)*(1-C((ep-.8)/.2));
+   el.style.transform='translate('+ex+'px,'+ey+'px) translate(-50%,-50%) rotate('+((i%2?1:-1)*240*ep)+'deg)';
+  });
   gr.style.opacity=C((p-.70)/.04);
   var ap=C((p-.74)/.06);
   chars.style.opacity=ap;chars.style.visibility=ap<.01?'hidden':'visible';
