@@ -2,11 +2,11 @@
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact | Miyauna Copeland</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=39">
 <link rel="icon" href="logos/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="logos/favicon.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="logos/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=39">
 <style>
 .cj{position:relative;height:1000vh}
 .cp{position:sticky;top:0;height:100vh;overflow:hidden}
@@ -34,6 +34,8 @@
 #runner{position:absolute;left:0;top:22vh;width:min(18vh,150px);margin:0;z-index:2}
 #runner .bob{animation:bob 4.5s ease-in-out infinite}
 #runner svg{display:block;width:100%;height:auto;transform-origin:50% 50%}
+#tuxf{position:absolute;left:0;top:34vh;width:min(20vh,170px);margin:0;z-index:2}
+#tuxf svg{display:block;width:100%;height:auto;overflow:visible}
 #ruL,#ruR,#raL,#raR{transform-box:view-box}
 #ruL{transform-origin:40px 108px}#ruR{transform-origin:60px 108px}
 #raL{transform-origin:18px 62px}#raR{transform-origin:82px 62px}
@@ -91,6 +93,11 @@
 #mor.stand svg{animation:none}
 #msit{left:0;bottom:5vh;width:min(44.8vh,355px);opacity:0;visibility:hidden;z-index:2;pointer-events:none}
 #msit svg{display:block;width:100%;height:auto;overflow:visible}
+#tux{left:0;bottom:3vh;width:min(14vh,110px);opacity:0;visibility:hidden;z-index:3;pointer-events:none}
+#tux .tf svg{display:block;width:100%;height:auto;overflow:visible;animation:hop .35s ease-in-out infinite}
+.woof{position:absolute;left:50%;top:-1.5rem;transform:translateX(-50%);opacity:0;white-space:nowrap;font-size:.75rem;font-weight:500;padding:.1rem .55rem;border:1px solid rgba(212,175,55,.7);border-radius:999px;background:rgba(10,21,48,.88);color:#f5f1e8}
+#tuxs{left:0;bottom:4vh;width:min(18vh,140px);opacity:0;visibility:hidden;z-index:2;pointer-events:none}
+#tuxs svg{display:block;width:100%;height:auto;overflow:visible}
 #feast{left:0;bottom:.5vh;width:min(700px,90vw);opacity:0;visibility:hidden;z-index:4;pointer-events:none}
 #feast svg{display:block;width:100%;height:auto}
 #ship{left:calc(50% - min(9vh,64px));bottom:17vh;width:min(18vh,128px);z-index:1;visibility:hidden;pointer-events:none}
@@ -102,12 +109,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88
  *{animation:none!important;transition:none!important}
  .cj{height:auto}.cp{position:static;height:auto;overflow:visible;padding:2rem 0}
  .cp>*{position:static}
- #planets,#mars,#inside,#ground,#crk,#boom,#ring,#chint,#eggs,#mor,#msit,#feast,#ship,#clk{display:none}
+ #planets,#mars,#inside,#ground,#crk,#boom,#ring,#chint,#eggs,#mor,#msit,#tux,#tuxs,#feast,#ship,#clk{display:none}
  #banner,#chars{opacity:1!important;visibility:visible!important;transform:none!important;margin:1rem auto}
 }
 </style>
 </head><body>
-<nav><a class="home" href="index.html"><img src="logos/logo.svg" alt="Home" width="36" height="36"></a><a href="about.html">About</a><a href="research.html" class="on">Research</a><a href="contact.html">Contact</a></nav>
+<nav><a class="home" href="index.html"><img src="logos/logo.svg" alt="Home" width="36" height="36"></a><a href="about.html">About</a><a href="research.html">Research</a><a href="contact.html" class="on">Contact</a></nav>
+
 <section class="cj" id="cj">
  <div class="cp">
   <div id="ground" aria-hidden="true"></div>
@@ -186,6 +194,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88
     <path d="M36 24Q42 18 50 18" fill="none" stroke="#fff" stroke-width="2" opacity=".55" stroke-linecap="round"/>
     <ellipse class="rf" cx="58" cy="38" rx="6" ry="4" fill="#ff4040"/>
    </svg></div></div>
+   <div id="tuxf"></div>
   </div>
 
   <div id="boom"></div><div id="ring"></div>
@@ -347,6 +356,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88
    <g fill="#8a4a2a"><circle cx="266" cy="100" r="3.6"/><circle cx="269" cy="92" r="3.6"/><circle cx="272" cy="102" r="3.6"/><circle cx="275" cy="96" r="3.6"/></g>
   </svg></div>
 
+  <div id="tux" aria-hidden="true"><div class="tf"></div><b class="woof">Woof!</b></div>
+  <div id="tuxs" aria-hidden="true"></div>
+
   <div id="ship" aria-hidden="true"><svg viewBox="0 0 100 152">
    <path d="M30 96L8 128l22-8zM70 96l22 32-22-8z" fill="#d4af37"/>
    <path d="M50 6C70 30 74 70 70 130H30C26 70 30 30 50 6Z" fill="#f5f1e8" stroke="#aab4cc" stroke-width="1.6"/>
@@ -400,171 +412,39 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88
  var C=function(x){return Math.max(0,Math.min(1,x))},D=180/Math.PI;
  var K=function(x){return Math.max(-1,Math.min(1,x))};
  var $=function(i){return document.getElementById(i)};
- var sec=$('cj'),cp=sec.querySelector('.cp'),rk=$('crk'),fl=rk.querySelector('.fl'),boom=$('boom'),ring=$('ring'),chars=$('chars'),
-  ban=$('banner'),hint=$('chint'),pls=$('planets'),mars=$('mars'),ins=$('inside'),gr=$('ground'),run=$('runner'),wm=$('wmars'),
-  mor=$('mor'),mst=$('mstars'),msit=$('msit'),feast=$('feast'),ship=$('ship'),sfl=$('sfl'),clk=$('clk');
- var a1=$('ali1'),camEls=[].slice.call(document.querySelectorAll('.cam')),eggs=camEls;
- var wf=document.createElement('div');
- wf.style.cssText='position:absolute;left:0;top:0;right:0;bottom:0;background:#fff;opacity:0;z-index:8;pointer-events:none';
- cp.appendChild(wf);
- var sparks=[];
- for(var s=0;s<18;s++){var sd=document.createElement('div');sd.className='spark';cp.appendChild(sd);sparks.push(sd);}
 
- var astEl=chars.querySelector('.ast'),aliens=[];
- [.18,.36].forEach(function(d,i){var c=a1.cloneNode(true);c.id='ali'+(i+2);
-  [].forEach.call(c.querySelectorAll('.al,.ar'),function(g){g.style.animationDelay=(-d)+'s'});
-  c.querySelector('svg').style.height='min('+(i?15:16)+'vh,'+(i?112:120)+'px)';
-  aliens.push(c);});
- var bbt=camEls.map(function(c){var d=document.createElement('div');d.className='bbt';d.appendChild(c.querySelector('svg').cloneNode(true));return d;});
- var runners=[bbt[0],bbt[1],astEl,a1].concat(aliens,[bbt[2],bbt[3]]);
- runners.forEach(function(el,i){chars.appendChild(el);el.style.animationDelay=(-i*.1)+'s';});
- var eatAnims=[].slice.call(chars.querySelectorAll('.eat')),wasSit=false;
-
- var legs=['ruL','ruR','raL','raR'].map($);
- var P=0,t0=null,done=false;
-
- function gx(T,amp,sx){
-  var v=2*amp/2.4;
-  if(T<2.4)return -amp+v*T;
-  if(T<4.8)return amp-v*(T-2.4);
-  if(T<5.7)return -amp;
-  if(T<7)return -amp+(sx+amp)*(T-5.7)/1.3;
-  return sx;
- }
-
- function frame(){
-  var W=innerWidth,H=innerHeight;
-  var p=C(-sec.getBoundingClientRect().top/(sec.offsetHeight-H));
-  P=p;
-  var x,y,rot,fs=0,show=0;
-  var om=4*Math.PI,a=.6*W,b=a/om*1.6,x0=.12*W,y0=H*.55;
-  if(p<.35){
-   var t=p/.35;
-   x=x0+a*t+b*Math.sin(om*t);y=y0+b*(Math.cos(om*t)-1);
-   rot=Math.atan2(-b*om*Math.sin(om*t),a+b*om*Math.cos(om*t))*D+90;
-   fs=Math.max(0,1.6*(1-C(t/.92)))*(.8+.2*Math.abs(Math.sin(p*300)));
-   show=1;
+ function tuxSVG(m){
+  function leg(x,amp,dur,ph){
+   return '<g><animateTransform attributeName="transform" type="rotate" values="'+(-amp)+' '+x+' 70;'+amp+' '+x+' 70;'+(-amp)+' '+x+' 70" dur="'+dur+'s" begin="'+ph+'s" repeatCount="indefinite"/>'+
+    '<rect x="'+(x-3.5)+'" y="68" width="7" height="24" rx="3.5" fill="#fff" stroke="#cfd3dd" stroke-width="1.2"/>'+
+    '<rect x="'+(x-5.5)+'" y="88" width="12" height="8" rx="3" fill="#8a8f9a"/></g>';
   }
-  var mr=Math.min(W,H)*.45,mx=W*.8,my=H*.62,tx=mx-mr*.8,ty=my+mr*.25;
-  if(p>=.55&&p<.67){
-   var q=C((p-.55)/.12),sx=-.1*W,sy=.2*H;
-   x=sx+(tx-sx)*q;y=sy+(ty-sy)*q*q;
-   rot=Math.atan2(2*(ty-sy)*q,tx-sx)*D+90+Math.sin(q*30)*8;fs=.001;show=1;
-  }
-  rk.style.opacity=show;
-  if(show){rk.style.transform='translate('+x+'px,'+y+'px) rotate('+rot+'deg)';fl.style.transform='scaleY('+fs+')';}
-
-  pls.style.transform='translateX('+(-2*W*C(p/.35))+'px)';
-  pls.style.opacity=1-C((p-.35)/.03);
-
-  ins.style.opacity=C((p-.36)/.03)*(1-C((p-.54)/.03));
-  var ft=(p-.36)*60;
-  var fx=W*.5+Math.sin(ft*.9)*W*.26-run.offsetWidth/2;
-  var fy=Math.sin(ft*1.3)*H*.06;
-  run.style.transform='translate('+fx+'px,'+fy+'px)';
-  run.querySelector('svg').style.transform='rotate('+(Math.sin(ft*.7)*24+Math.sin(ft*.31)*14)+'deg)';
-  legs[0].style.transform='rotate('+(8+Math.sin(ft*1.1)*12)+'deg)';
-  legs[1].style.transform='rotate('+(-8+Math.sin(ft*1.1+1.6)*12)+'deg)';
-  legs[2].style.transform='rotate('+(-25+Math.sin(ft*.9)*14)+'deg)';
-  legs[3].style.transform='rotate('+(25+Math.sin(ft*.9+2)*14)+'deg)';
-  if(wm){wm.style.transform='scale('+(.3+1.6*C((p-.36)/.19))+')';}
-
-  mars.style.opacity=C((p-.54)/.03)*(1-C((p-.72)/.03));
-  mars.style.transform='scale('+(.3+.7*C((p-.54)/.11))+')';
-
-  var bp=C((p-.67)/.12),env=Math.sin(Math.PI*Math.pow(bp,.6)),big=Math.max(W,H);
-  boom.style.left=tx+'px';boom.style.top=ty+'px';
-  boom.style.opacity=(bp>0&&bp<1)?env:0;boom.style.transform='scale('+(.2+bp*big/80)+')';
-  ring.style.left=tx+'px';ring.style.top=ty+'px';
-  ring.style.opacity=(bp>0&&bp<1)?env*.8:0;ring.style.transform='scale('+(.2+bp*big/50)+')';
-  wf.style.opacity=(bp>0&&bp<1)?Math.max(0,.9*(1-Math.abs(bp-.12)/.12)):0;
-  var sh=(bp>0&&bp<.35)?1-bp/.35:0;
-  cp.style.transform='translate('+(Math.sin(p*3000)*8*sh)+'px,'+(Math.cos(p*2700)*8*sh)+'px)';
-  sparks.forEach(function(el,i){
-   var ang=i/sparks.length*2*Math.PI,d=bp*big*(.22+.14*(i%3));
-   el.style.left=(tx+Math.cos(ang)*d)+'px';el.style.top=(ty+Math.sin(ang)*d+80*bp*bp)+'px';
-   el.style.opacity=(bp>0&&bp<1)?C(bp*8)*(1-bp):0;
-  });
-
-  var ep=C((p-.68)/.12);
-  eggs.forEach(function(el,i){
-   var ang=(-150+i*40)*Math.PI/180,dist=ep*big*(.28+.06*(i%2));
-   var ex=tx+Math.cos(ang)*dist,ey=ty+Math.sin(ang)*dist+260*ep*ep;
-   el.style.opacity=C(ep*6)*(1-C((ep-.75)/.25));
-   el.style.transform='translate('+ex+'px,'+ey+'px) translate(-50%,-50%)';
-   el.firstElementChild.style.transform='rotate('+((i%2?1:-1)*300*ep)+'deg)';
-  });
-
-  gr.style.opacity=C((p-.70)/.04);
-
-  var bn=C((p-.86)/.08);
-  ban.style.opacity=bn;ban.style.visibility=bn<.01?'hidden':'visible';
-  ban.style.transform='translateY('+((1-bn)*24)+'px)';
-  if(hint)hint.style.opacity=1-C(p/.03);
- }
-
- function tick(now){
-  var W=innerWidth,H=innerHeight,amp=Math.max(30,(W-720)/2-20),L=1.7;
-  var sx=-Math.min(130,Math.max(0,(W-900)/2));
-  if(P<.70){t0=null;done=false;}
-  else if(P>=.80&&t0===null&&!done)t0=now;
-  var T=done?20:(t0===null?-1:(now-t0)/1000);
-  if(!done&&T>12.2){done=true;T=20;}
-
-  var ap=C((P-.74)/.06),Tg=Math.max(T,0);
-  var face=Tg<3.6?K(6*(2.4-Tg)):K(6*(Tg-4.8));
-  var board=T<10.9;
-  var bd=board?C((T-7)/.6):0;
-  var cf=board?1-C((bd-.7)/.3):C((T-11)/.6);
-  var sc=1-.85*bd;
-  var gxv=board?gx(Tg,amp,0):sx;
-  var sitNow=T>=11;
-  chars.classList.toggle('sit',sitNow);
-  if(sitNow!==wasSit){
-   wasSit=sitNow;
-   eatAnims.forEach(function(an,i){try{if(sitNow){an.beginElementAt(-(i%4)*.2);}else{an.endElement();}}catch(e){}});
-  }
-  chars.style.opacity=ap*cf;
-  chars.style.visibility=(ap*cf<.01)?'hidden':'visible';
-  chars.style.transform='translate('+gxv+'px,'+((1-ap)*30-(board?(.15*H+45)*bd:0))+'px) scale('+(board?face*sc:1)+','+(board?sc:.78)+')';
-
-  var mw=msit.offsetWidth||355;
-  var Mx=Math.min(sx+345+.46*mw+95,W/2-110);
-  var hitX=gx(3.9,amp,0),mxv,mf,rotm=0,dz=false;
-  if(T<5.6){var Tm=T-L;mxv=gx(Tm,amp,0);mf=Tm<3.6?K(6*(2.4-Tm)):K(6*(Tm-4.8));}
-  else if(T<7.6){mxv=hitX;mf=-1;dz=true;rotm=Math.sin(T*9)*7;}
-  else if(T<9){mxv=hitX*(1-C((T-7.6)/.7));mf=K(6*(T-7.7));}
-  else{mxv=Mx*C((T-9)/.7);mf=K(6*(T-7.7))*(1-2*C((T-9.4)/.1));}
-  var jy=(T>8.3&&T<9)?-Math.sin((T-8.3)/.7*Math.PI)*110:0;
-  var mo=T<0?0:1-C((T-9.5)/.2);
-  mor.classList.toggle('stand',dz);
-  mor.style.opacity=mo;mor.style.visibility=mo<.01?'hidden':'visible';
-  mor.style.transform='translate('+(W/2+mxv-mor.offsetWidth/2)+'px,'+jy+'px) rotate('+rotm+'deg) scale('+(mf*.92)+',.92)';
-  mst.style.opacity=dz?1:0;
-
-  var so=(done?1:(T<9.5?0:C((T-9.5)/.3)))*ap;
-  msit.style.opacity=so;msit.style.visibility=so<.01?'hidden':'visible';
-  msit.style.transform='translate('+(W/2+Mx-.73*mw)+'px,0) scaleX(-1)';
-
-  var fo=(done?1:C((T-10.8)/.5))*ap,fw=feast.offsetWidth||700;
-  feast.style.opacity=fo;feast.style.visibility=fo<.01?'hidden':'visible';
-  feast.style.transform='translate('+(W/2+sx-fw/2)+'px,0)';
-
-  var s=C((T-2.6)/2);
-  var sy=T<2.6?-(H+400):(T<7.6?-(H+400)*Math.pow(1-s,3):-Math.pow(T-7.6,2)*520);
-  ship.style.visibility=(T>=2.5&&T<9.4)?'visible':'hidden';
-  ship.style.transform='translateY('+sy+'px)';
-  sfl.style.opacity=((T>=2.6&&T<4.8)||(T>=7.5&&T<9.4))?1:0;
-
-  var cu=C((T-5)/.6),sx0=W/2-amp-152,sy0=H*.98-110,ex=W/2+hitX,ey=H*.95-90;
-  clk.style.opacity=(T>=5&&T<5.6)?1:0;
-  clk.style.transform='translate('+(sx0+(ex-sx0)*cu)+'px,'+(sy0+(ey-sy0)*cu-Math.sin(Math.PI*cu)*H*.18)+'px) translate(-50%,-50%) rotate('+(cu*720)+'deg)';
-
-  requestAnimationFrame(tick);
- }
-
- addEventListener('scroll',frame,{passive:true});addEventListener('resize',frame);
- frame();requestAnimationFrame(tick);
-})();
-</script>
-</body></html>
+  if(m==='sit'){
+   return '<svg viewBox="0 0 130 120" style="overflow:visible">'+
+    '<ellipse cx="62" cy="114" rx="50" ry="5" fill="rgba(0,0,0,.3)"/>'+
+    '<g><animateTransform attributeName="transform" type="rotate" values="-12 30 98;12 30 98;-12 30 98" dur=".35s" repeatCount="indefinite"/>'+
+    '<path d="M30 98Q10 98 8 82" stroke="#cfd3dd" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M30 98Q10 98 8 82" stroke="#fff" stroke-width="4.6" fill="none" stroke-linecap="round"/></g>'+
+    '<ellipse cx="46" cy="96" rx="22" ry="17" fill="#fff" stroke="#cfd3dd" stroke-width="1.6"/>'+
+    '<ellipse cx="68" cy="110" rx="13" ry="6" fill="#8a8f9a"/>'+
+    '<ellipse cx="60" cy="70" rx="19" ry="30" fill="#fff" stroke="#cfd3dd" stroke-width="1.6" transform="rotate(14 60 70)"/>'+
+    '<circle cx="52" cy="62" r="6" fill="#26262e"/><circle cx="44" cy="96" r="5" fill="#26262e"/><circle cx="66" cy="84" r="3.6" fill="#c98a5e"/>'+
+    '<rect x="36" y="48" width="14" height="30" rx="5" fill="#17306b" stroke="#6f86c4" transform="rotate(14 43 63)"/>'+
+    '<circle class="blink" cx="43" cy="56" r="2" fill="#ff4040"/><circle cx="43" cy="63" r="2" fill="#7bd88f"/>'+
+    '<rect x="64" y="62" width="6" height="22" rx="2" fill="#d4af37" transform="rotate(14 67 73)"/>'+
+    '<line x1="62" y1="82" x2="84" y2="64" stroke="#cfd3dd" stroke-width="9" stroke-linecap="round"/><line x1="62" y1="82" x2="84" y2="64" stroke="#fff" stroke-width="6.5" stroke-linecap="round"/>'+
+    '<line x1="68" y1="80" x2="90" y2="58" stroke="#cfd3dd" stroke-width="9" stroke-linecap="round"/><line x1="68" y1="80" x2="90" y2="58" stroke="#fff" stroke-width="6.5" stroke-linecap="round"/>'+
+    '<circle cx="90" cy="58" r="5.5" fill="#8a8f9a"/><circle cx="84" cy="64" r="5" fill="#8a8f9a"/>'+
+    '<ellipse cx="68" cy="42" rx="11" ry="4.5" fill="#d4af37"/>'+
+    '<g><animateTransform attributeName="transform" type="translate" values="0 0;1 2;0 0" dur=".4s" repeatCount="indefinite"/>'+
+    '<path d="M69 27L65 5L80 20Z" fill="#fff" stroke="#cfd3dd" stroke-width="1.4" stroke-linejoin="round"/>'+
+    '<path d="M82 19L94 2L97 24Z" fill="#26262e" stroke="#cfd3dd" stroke-width="1.4" stroke-linejoin="round"/>'+
+    '<circle cx="80" cy="34" r="16" fill="#fff" stroke="#cfd3dd" stroke-width="1.6"/>'+
+    '<circle cx="84" cy="30" r="7" fill="#c98a5e"/>'+
+    '<ellipse cx="93" cy="41" rx="9" ry="6.5" fill="#fff" stroke="#cfd3dd" stroke-width="1.4"/><circle cx="101" cy="39" r="3" fill="#111"/>'+
+    '<path d="M79 30q5-5 10 0" stroke="#111" stroke-width="2" fill="none" stroke-linecap="round"/>'+
+    '<circle cx="82" cy="26" r="34" fill="rgba(170,205,255,.15)" stroke="#aab4cc" stroke-width="2.5"/>'+
+    '<path d="M58 14Q64 4 78 0" stroke="#fff" stroke-width="2" fill="none" opacity=".6" stroke-linecap="round"/>'+
+    '<g><animateTransform attributeName="transform" type="translate" values="0 0;2 -2;0 0" dur=".5s" repeatCount="indefinite"/>'+
+    '<g transform="translate(78,46) rotate(-8)"><rect x="2" y="3" width="30" height="6" rx="3" fill="#f6ecd0" stroke="#c9b48a"/>'+
+    '<circle cx="3" cy="2" r="4.2" fill="#f6ecd0" stroke="#c9b48a"/><circle cx="3" cy="10" r="4.2" fill="#f6ecd0" stroke="#c9b48a"/>'+
+    '<circle cx="31" cy="2" r
