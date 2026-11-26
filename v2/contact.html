@@ -45,7 +45,7 @@
 #ring{width:200px;height:200px;margin:-100px 0 0 -100px;border-radius:50%;opacity:0;pointer-events:none;border:6px solid #ffb35c;z-index:6}
 #ground{inset:0;opacity:0;z-index:1;background:linear-gradient(180deg,#1a0d0a 0%,#5a2416 55%,#7d341c 73.9%,#a04524 74%,#7a3118 100%)}
 #ground::before{content:"";position:absolute;left:8%;bottom:6%;width:90px;height:26px;border-radius:50%;background:rgba(60,20,8,.35);box-shadow:520px -10px 0 6px rgba(60,20,8,.3)}
-#chars{left:0;right:0;bottom:2vh;display:flex;justify-content:center;align-items:flex-end;gap:1.4rem;opacity:0;visibility:hidden;z-index:3}
+#chars{left:0;right:0;bottom:2vh;display:flex;justify-content:center;align-items:flex-end;gap:1.4rem;opacity:0;visibility:hidden;z-index:3;transform-origin:50% 100%}
 #chars svg{height:min(24vh,180px);width:auto;display:block}
 .ast svg{transform-origin:50% 100%;animation:sway 1.6s ease-in-out infinite}
 .stars{transform-box:view-box;transform-origin:60px 22px;animation:orbit 2s linear infinite}
@@ -85,12 +85,14 @@
 #chars .ali:nth-child(3){animation-delay:-.12s}#chars .ali:nth-child(4){animation-delay:-.24s}
 #mor{left:0;bottom:2vh;width:min(24vh,190px);opacity:0;visibility:hidden;z-index:2;pointer-events:none}
 #mor svg{display:block;width:100%;height:auto;animation:hop .4s ease-in-out infinite}
+#ship{left:calc(50% - min(10vh,70px));bottom:2vh;width:min(20vh,140px);z-index:2;visibility:hidden;pointer-events:none}
+#ship svg{display:block;width:100%;height:auto;overflow:visible}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88);backdrop-filter:blur(6px)}
 @media(prefers-reduced-motion:reduce){
  *{animation:none!important;transition:none!important}
  .cj{height:auto}.cp{position:static;height:auto;overflow:visible;padding:2rem 0}
  .cp>*{position:static}
- #planets,#mars,#inside,#ground,#crk,#boom,#ring,#chint,#eggs,#mor{display:none}
+ #planets,#mars,#inside,#ground,#crk,#boom,#ring,#chint,#eggs,#mor,#ship{display:none}
  #banner,#chars{opacity:1!important;visibility:visible!important;transform:none!important;margin:1rem auto}
 }
 </style>
@@ -255,6 +257,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88
    <path d="M78 51l2 5 2-4 2 5 2-4 2 5 2-4" stroke="#fff" stroke-width="1.6" fill="none"/>
   </svg></div>
 
+  <div id="ship" aria-hidden="true"><svg viewBox="0 0 100 152">
+   <path d="M30 96L8 128l22-8zM70 96l22 32-22-8z" fill="#d4af37"/>
+   <path d="M50 6C70 30 74 70 70 130H30C26 70 30 30 50 6Z" fill="#f5f1e8" stroke="#aab4cc" stroke-width="1.6"/>
+   <rect x="29" y="84" width="42" height="7" fill="#d4af37"/>
+   <circle cx="50" cy="50" r="10" fill="#0a1530" stroke="#d4af37" stroke-width="3"/>
+   <path d="M44 46Q47 43 51 43" fill="none" stroke="#fff" stroke-width="1.6" opacity=".6" stroke-linecap="round"/>
+   <rect x="42" y="100" width="16" height="30" rx="8" fill="#17306b" stroke="#d4af37" stroke-width="2"/>
+   <path d="M32 124L16 148M68 124L84 148" stroke="#d4af37" stroke-width="4" stroke-linecap="round"/>
+   <path d="M8 150h16M76 150h16" stroke="#aab4cc" stroke-width="3" stroke-linecap="round"/>
+   <rect x="40" y="130" width="20" height="8" rx="2" fill="#8a8f9a"/>
+   <g id="sfl" style="opacity:0">
+    <ellipse cx="50" cy="150" rx="9" ry="16" fill="#ffb35c"><animate attributeName="ry" values="12;24;12" dur=".18s" repeatCount="indefinite"/></ellipse>
+    <ellipse cx="50" cy="146" rx="5" ry="9" fill="#fff"><animate attributeName="ry" values="6;13;6" dur=".18s" repeatCount="indefinite"/></ellipse>
+   </g>
+  </svg></div>
+
   <div id="banner">
    <h1>Let's talk about the physics.</h1>
    <p>Feel free to reach out. I'm always glad to hear from fellow students and researchers, and I welcome advice and help as I keep learning.</p>
@@ -286,7 +304,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88
  var K=function(x){return Math.max(-1,Math.min(1,x))};
  var $=function(i){return document.getElementById(i)};
  var sec=$('cj'),cp=sec.querySelector('.cp'),rk=$('crk'),fl=rk.querySelector('.fl'),boom=$('boom'),ring=$('ring'),chars=$('chars'),
-  ban=$('banner'),hint=$('chint'),pls=$('planets'),mars=$('mars'),ins=$('inside'),gr=$('ground'),run=$('runner'),wm=$('wmars'),mor=$('mor');
+  ban=$('banner'),hint=$('chint'),pls=$('planets'),mars=$('mars'),ins=$('inside'),gr=$('ground'),run=$('runner'),wm=$('wmars'),
+  mor=$('mor'),ship=$('ship'),sfl=$('sfl');
  var a1=$('ali1'),eggs=[].slice.call(document.querySelectorAll('.cam'));
  var wf=document.createElement('div');
  wf.style.cssText='position:absolute;left:0;top:0;right:0;bottom:0;background:#fff;opacity:0;z-index:8;pointer-events:none';
@@ -298,9 +317,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88
   c.querySelector('svg').style.height='min('+(i?19:23)+'vh,'+(i?135:165)+'px)';
   chars.appendChild(c);});
  var legs=['ruL','ruR','raL','raR'].map($);
+ var P=0,t0=null,done=false;
+
+ function gx(T,amp){
+  var v=2*amp/2.4;
+  if(T<2.4)return -amp+v*T;
+  if(T<4.8)return amp-v*(T-2.4);
+  if(T<6)return -amp+v*(T-4.8);
+  return 0;
+ }
+
  function frame(){
   var W=innerWidth,H=innerHeight;
   var p=C(-sec.getBoundingClientRect().top/(sec.offsetHeight-H));
+  P=p;
   var x,y,rot,fs=0,show=0;
   var om=4*Math.PI,a=.6*W,b=a/om*1.6,x0=.12*W,y0=H*.55;
   if(p<.35){
@@ -361,20 +391,44 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,21,48,.88
   });
 
   gr.style.opacity=C((p-.70)/.04);
-  var ap=C((p-.74)/.06);
-  chars.style.opacity=ap;chars.style.visibility=ap<.01?'hidden':'visible';
-  var u=C((p-.78)/.22)*4*Math.PI,amp=Math.max(40,(W-580)/2-20)*C((p-.78)/.04);
-  chars.style.transform='translate('+(Math.sin(u)*amp)+'px,'+((1-ap)*30)+'px) scaleX('+K(Math.cos(u)*3)+')';
-  var mo=C((p-.80)/.03);
-  mor.style.opacity=mo;mor.style.visibility=mo<.01?'hidden':'visible';
-  mor.style.transform='translate('+(W/2+Math.sin(u-.7)*amp-mor.offsetWidth/2)+'px,0) scaleX('+K(Math.cos(u-.7)*3)+')';
 
   var bn=C((p-.86)/.08);
   ban.style.opacity=bn;ban.style.visibility=bn<.01?'hidden':'visible';
   ban.style.transform='translateY('+((1-bn)*24)+'px)';
   if(hint)hint.style.opacity=1-C(p/.03);
  }
- addEventListener('scroll',frame,{passive:true});addEventListener('resize',frame);frame();
+
+ function tick(now){
+  var W=innerWidth,H=innerHeight,amp=Math.max(40,(W-580)/2-20);
+  if(P<.76){t0=null;done=false;}
+  else if(P>=.80&&t0===null&&!done)t0=now;
+  var T=done?11:(t0===null?-1:(now-t0)/1000);
+  if(!done&&T>10.5){done=true;T=11;}
+
+  var ap=C((P-.74)/.06),Tg=Math.max(T,0);
+  var face=Tg<3.6?K(6*(2.4-Tg)):K(6*(Tg-4.8));
+  var bd=C((T-6)/.6),cf=T>=11?0:1-C((bd-.7)/.3),sc=1-.85*bd;
+  chars.style.opacity=ap*cf;
+  chars.style.visibility=(ap<.01||cf<.01)?'hidden':'visible';
+  chars.style.transform='translate('+gx(Tg,amp)+'px,'+((1-ap)*30-60*bd)+'px) scale('+(face*sc)+','+sc+')';
+
+  var Tm=T-.9,mf=Tm<3.6?K(6*(2.4-Tm)):K(6*(Tm-4.8));
+  var jy=(T>6.9&&T<7.6)?-Math.sin((T-6.9)/.7*Math.PI)*90:0;
+  var mo=T<0?0:1-C((T-9.5)/1);
+  mor.style.opacity=mo;mor.style.visibility=mo<.01?'hidden':'visible';
+  mor.style.transform='translate('+(W/2+gx(Tm,amp)-mor.offsetWidth/2)+'px,'+jy+'px) scaleX('+mf+')';
+
+  var s=C((T-3.6)/2.1);
+  var sy=T<3.6?-(H+400):(T<6.6?-(H+400)*Math.pow(1-s,3):-Math.pow(T-6.6,2)*520);
+  ship.style.visibility=(T>=3.5&&T<9.5)?'visible':'hidden';
+  ship.style.transform='translateY('+sy+'px)';
+  sfl.style.opacity=((T>=3.6&&T<5.8)||(T>=6.5&&T<9.5))?1:0;
+
+  requestAnimationFrame(tick);
+ }
+
+ addEventListener('scroll',frame,{passive:true});addEventListener('resize',frame);
+ frame();requestAnimationFrame(tick);
 })();
 </script>
 </body></html>
