@@ -53,5 +53,27 @@
  <p><a class="btn" href="research.html">Read the Research</a></p>
  </div>
 <footer>© 2026 Miyauna Copeland.</footer>
+<footer>© 2026 Miyauna Copeland.</footer>
+
+<script>
+(function(){
+ var s=document.getElementById('record');if(!s)return;
+ var t=document.getElementById('rtext'),m=document.getElementById('rmsg');
+ function c(x){return Math.max(0,Math.min(1,x))}
+ function tick(){
+  var p=c(-s.getBoundingClientRect().top/(s.offsetHeight-innerHeight));
+  var a=c((p-.25)/.35),b=c((p-.6)/.25);
+  t.style.opacity=1-a;
+  t.style.transform='scale('+(1-.9*a)+') rotate('+(-8*a)+'deg)';
+  t.style.filter='blur('+(8*a)+'px)';
+  m.style.opacity=b;
+  m.style.transform='translateY('+((1-b)*20)+'px)';
+ }
+ addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);tick();
+})();
+</script>
+
 <script src="about.js"></script>
+</body></html>
+ <script src="about.js"></script>
 </body></html>
