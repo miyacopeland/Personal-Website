@@ -27,7 +27,7 @@
 <div class="stage" aria-hidden="true"><div class="pin"><canvas id="merger"></canvas><div class="cap" id="mcap">Scroll to bring them together</div></div></div>
 
 <!-- SEQUENCE 2: ADHD, sputtering rocket, clock, information -->
-<section class="journey" data-h="800vh" data-scene="2">
+<section class="journey" data-h="1150vh" data-scene="2">
  <div class="jpin">
 
   <p class="sc note" data-t="0,0.001,0.60,0.68" data-fx="fade">ADHD scatters my focus. I always find my way back, and I finish what I start.</p>
@@ -49,8 +49,8 @@
 <span class="sc chip v5 jit" data-t="0.31,0.34,0.38,0.42" data-fx="fade">Pick something safer.</span>
 <span class="sc chip v6 jit" data-t="0.33,0.36,0.38,0.42" data-fx="fade">Isn't it too late?</span>
 <span class="sc chip v7 jit" data-t="0.35,0.38,0.40,0.43" data-fx="fade">That field isn't for everyone.</span>
-  <div class="sc me" data-t="0,0.001,0.88,0.93" data-fx="fade">
-   <svg viewBox="0 0 100 200" aria-hidden="true">
+<div class="sc me" data-t="0,0.001,3,4" data-fx="fade">
+ <svg viewBox="0 0 100 200" aria-hidden="true">
     <g id="dizzy" opacity="0"><circle class="dz" r="2.4" fill="#d4af37"/><circle class="dz" r="2.4" fill="#d4af37"/><circle class="dz" r="2.4" fill="#d4af37"/></g>
     <circle cx="50" cy="8" r="9" fill="#0b0b0f"/>
     <ellipse cx="50" cy="28" rx="19" ry="20" fill="#0b0b0f"/>
@@ -67,13 +67,13 @@
    </svg>
   </div>
 
-  <div class="sc launch" data-t="0.56,0.64,0.92,0.96" data-fx="fade">
-   <svg class="waves" id="waves" height="70"></svg>
+<div class="sc launch" data-t="0.56,0.64,1.55,1.6" data-fx="fade">
+ <svg class="waves" id="waves" height="70"></svg>
    <svg class="rocket" id="rocket" viewBox="0 0 60 120"><path d="M30 4C44 24 46 50 42 84H18C14 50 16 24 30 4Z" fill="#f5f1e8"/><circle cx="30" cy="44" r="8" fill="#0a1530" stroke="#d4af37" stroke-width="3"/><path d="M18 70L4 96l14-6zM42 70l14 26-14-6z" fill="#d4af37"/><path d="M24 86Q30 118 36 86Z" fill="#d4af37"/></svg>
    <div class="clock" id="clock"></div>
   </div>
 
-  <div class="sc tow" data-t="0.76,0.77,2,3" data-fx="tow">
+<div class="sc tow" data-t="1.30,1.31,3,4" data-fx="tow">
    <h2>Launch site</h2>
    <img src="miya.jpeg" alt="Miyauna Copeland" class="headshot side">
    <p>I'm from Pensacola, Florida, the oldest of three: two brothers and one sister. My family calls me the impulsive one, a reputation built largely on the one time I boarded a skydiving plane.</p>
@@ -121,15 +121,17 @@
  if(wv){var d='M0 35';for(var i=0;i<60;i++)d+=' Q'+(i*40+20)+' '+(i%2?65:5)+' '+(i*40+40)+' 35';
   wv.setAttribute('viewBox','0 0 2400 70');wv.setAttribute('preserveAspectRatio','none');
   wv.innerHTML='<path d="'+d+'"/>';}
-var starts=[.06,.12,.14,.16,.18,.19,.22,.24,.26,.28,.30,.31,.33,.35]; function run(s){
-  var p=C(-s.getBoundingClientRect().top/(s.offsetHeight-innerHeight));
+ var starts=[.06,.12,.14,.16,.18,.19,.22,.24,.26,.28,.30,.31,.33,.35];
+ function run(s){
+  var raw=-s.getBoundingClientRect().top;
+  var p=s.dataset.scene==='2'?Math.max(0,Math.min(1.5,raw/(7*innerHeight))):C(raw/(s.offsetHeight-innerHeight));
   [].forEach.call(s.querySelectorAll('[data-t]'),function(el){
    var w=el.dataset.t.split(',').map(Number),fx=el.dataset.fx;
    var i=C((p-w[0])/(w[1]-w[0])),o=C((p-w[2])/(w[3]-w[2])),op=Math.min(i,1-o),t='',f='';
    if(fx==='suck'){var q=o*o;op=i*(o>=1?0:1-q*.6);t='scale('+(1-q*.98)+') rotate('+(-900*q)+'deg)';f='blur('+(o*8)+'px)';}
    else if(fx==='hole'){t='scale('+(.3+.9*i-.7*o)+')';}
    else if(fx==='pop'){op=C(i*3)*(1-o);t='scale('+(.5+.5*back(i))+')';}
-   else if(fx==='tow'){op=i>0?1:0;t='translateY('+(innerHeight-(el.offsetHeight+60)*C((p-.78)/.22))+'px)';}
+   else if(fx==='tow'){op=i>0?1:0;t='translateY('+(innerHeight-(el.offsetHeight+60)*C((p-1.30)/.20))+'px)';}
    else{t='translateY('+((1-i)*30)+'px)';}
    if(el.classList.contains('jit')){t+=' translate('+(Math.sin(p*400)*4)+'px,'+(Math.cos(p*330)*3)+'px)';}
    el.style.opacity=op;el.style.visibility=op<.01?'hidden':'visible';
@@ -138,13 +140,30 @@ var starts=[.06,.12,.14,.16,.18,.19,.22,.24,.26,.28,.30,.31,.33,.35]; function r
   if(s.dataset.scene==='2'){
    var H=innerHeight,Wd=innerWidth;
    var sp=(p>.58&&p<.76)?C((p-.58)/.03):0;
-   var q2=C((p-.76)/.14);
-   var ty=p<.76?H*(.45-.12*C((p-.56)/.2)):H*(.33-1.45*q2*q2);
-   var rk=document.getElementById('rocket');
-   rk.style.transform='translate('+(Math.sin(p*500)*5*sp)+'px,'+(ty+Math.sin(p*420)*4*sp)+'px) rotate('+(Math.sin(p*300)*6*sp)+'deg)';
-   var fl=rk.querySelector('path:last-child');
-   fl.style.transform='scaleY('+(p<.56?1:(p<.76?(.25+.5*Math.abs(Math.sin(p*170))):(1.9-.4*q2)))+')';
-
+var rk=document.getElementById('rocket'),mm=document.querySelector('.me');
+var cs=getComputedStyle(rk),rw=parseFloat(cs.width)||60,rh=parseFloat(cs.height)||120;
+var mx=mm.offsetLeft+mm.offsetWidth/2,my=mm.offsetTop+mm.offsetHeight/2;
+var x=0,y,rot,sc=1,fy,y0=H*.33;
+if(p<.76){
+ x=Math.sin(p*500)*5*sp;y=H*(.45-.12*C((p-.56)/.2))+Math.sin(p*420)*4*sp;
+ rot=Math.sin(p*300)*6*sp;fy=p<.56?1:.25+.5*Math.abs(Math.sin(p*170));
+}else if(p<1.02){
+ var a=C((p-.76)/.14),a2=Math.pow(a,1.6);
+ x=(Wd/2+rw*2)*a2;y=y0+Math.sin(a*26)*H*.07*a;
+ rot=1800*a*a+Math.sin(a*40)*20;sc=1+.25*a;fy=1.2+.8*Math.abs(Math.sin(a*60));
+}else if(p<1.26){
+ var b=C((p-1.02)/.16),e=1-Math.pow(1-b,3);
+ var cx=-rw+(mx+rw)*e,cy=my-Math.sin(Math.PI*b)*H*.12;
+ x=cx-Wd/2;y=cy-rh/2-H*.5;
+ rot=-720*(1-e)+Math.sin(b*30)*8*(1-b);sc=.2+.95*e;fy=1.2;
+}else{
+ var c2=C((p-1.26)/.14);
+ x=mx-Wd/2;y=my-rh/2-H*.5-(my+rh*2)*c2*c2;sc=1.15;rot=0;fy=2+c2;
+}
+rk.style.transform='translate('+x+'px,'+y+'px) rotate('+rot+'deg) scale('+sc+')';
+rk.querySelector('path:last-child').style.transform='scaleY('+fy+')';
+var tk=C((p-1.18)/.08);
+if(tk>0){mm.style.transform='scale('+(1-.85*tk)+')';mm.style.opacity=1-C((p-1.24)/.04);}
    var pulse=C((p-.28)/.04)*(1-C((p-.42)/.04));
    var thr=p<.70?-170*C((p-.64)/.06):-170+170*C((p-.70)/.08);
    document.getElementById('arm').style.transform='rotate('+(160*pulse+thr)+'deg)';
@@ -163,7 +182,7 @@ var starts=[.06,.12,.14,.16,.18,.19,.22,.24,.26,.28,.30,.31,.33,.35]; function r
    starts.forEach(function(st){var dd=p-st;if(dd>=0&&dd<.035)amp=Math.max(amp,1-dd/.035);});
    if(p>.30&&p<.42)amp=Math.max(amp,.45);
    me.style.transform='translate('+(Math.sin(p*1400)*7*amp)+'px,'+(Math.cos(p*1100)*3*amp)+'px) rotate('+(Math.sin(p*900)*4*amp)+'deg)';
-   wv.style.transform='translateX('+(-p*900)+'px)';
+   wv.style.transform='translateX('+(-Math.min(p,1)*900)+'px)';
   }
  }
  function all(){secs.forEach(run)}
