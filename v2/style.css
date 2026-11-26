@@ -64,3 +64,5 @@ nav .home{margin-right:auto}
 nav .home{margin-right:auto}
 .headshot{width:210px;height:270px;border-radius:50%;object-fit:cover;object-position:center top}
 .headshot.side{float:right;margin:0 0 1rem 1.5rem;position:relative;left:0}
+#chirp{display:block;width:100%;max-width:380px;height:auto}
+#merger{display:block;width:100%;max-width:640px;height:420px;margin:0 auto}
