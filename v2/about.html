@@ -3,28 +3,45 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About | Miyauna Copeland</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=28">
+<link rel="stylesheet" href="style.css?v=31">
 </head><body>
 <nav><a class="home" href="index.html"><img src="logos/logo.svg" alt="Home" width="36" height="36"></a><a href="research.html">Research</a><a href="about.html" class="on">About</a><a href="contact.html">Contact</a></nav>
- <div class="stage" aria-hidden="true"><div class="pin"><canvas id="merger"></canvas><div class="cap" id="mcap">Scroll to bring them together</div></div></div>
-<div class="wrap after">
- <section class="record" id="record">
- <div class="rpin">
-  <div class="rtext" id="rtext">
+
+<!-- SEQUENCE 1: doubt, black hole, principle -->
+<section class="journey" data-h="320vh">
+ <div class="jpin">
+  <div class="sc left" data-t="0,0.001,0.30,0.52" data-fx="suck">
    <h2>The record</h2>
    <p>For a while, someone in my life kept asking why I wanted to study physics. Over time I understood that it wasn't curiosity. It was a test of whether I would talk myself out of it. His conclusion never changed: without a lifelong background in mathematics, and without a mind wired a particular way, I wasn't a serious candidate for this field. He said it gently, as a kindness, which somehow made it harder to hear.</p>
    <p>These conversations came after I had been selected as Chief Scientist for NASA L'SPACE's Mission Concept Academy, where I led the science requirements for a proposed Mars subsurface exploration mission. They did not change his view. I didn't argue with him. I decided that the most honest answer to that kind of doubt is not a debate. It is a record.</p>
   </div>
-  <p class="principle rmsg" id="rmsg">Doubt from outside tells you very little about what is possible. Physics does not belong to one kind of mind or one kind of background.</p>
+  <div class="hole sc" data-t="0.25,0.40,0.60,0.74" data-fx="hole"></div>
+  <p class="sc principle" data-t="0.52,0.64,2,3" data-fx="pop">Doubt from outside tells you very little about what is possible. Physics does not belong to one kind of mind or one kind of background.</p>
  </div>
 </section>
+
+<!-- MERGER -->
+<div class="stage" aria-hidden="true"><div class="pin"><canvas id="merger"></canvas><div class="cap" id="mcap">Scroll to bring them together</div></div></div>
+
+<!-- SEQUENCE 2: ADHD, rocket, watch -->
+<section class="journey" data-h="520vh" data-scene="2">
+ <div class="jpin">
+  <p class="sc big" data-t="0,0.001,0.16,0.24" data-fx="fade">Why did I open this page?</p>
+  <p class="sc big jit" data-t="0.18,0.24,0.36,0.42" data-fx="fade">Wait. What was I doing? Oh, that's shiny.</p>
+  <p class="sc big snap" data-t="0.42,0.46,0.52,0.58" data-fx="pop">Oh. Right.</p>
+  <div class="sc launch" data-t="0.56,0.64,0.97,1" data-fx="fade">
+   <svg class="waves" id="waves" height="70"></svg>
+   <svg class="rocket" id="rocket" viewBox="0 0 60 120"><path d="M30 4C44 24 46 50 42 84H18C14 50 16 24 30 4Z" fill="#f5f1e8"/><circle cx="30" cy="44" r="8" fill="#0a1530" stroke="#d4af37" stroke-width="3"/><path d="M18 70L4 96l14-6zM42 70l14 26-14-6z" fill="#d4af37"/><path d="M24 86Q30 118 36 86Z" fill="#d4af37"/></svg>
+   <div class="watch"><div class="hand" id="hand"></div></div>
+   <p class="wlabel" id="wlabel"></p>
+  </div>
+ </div>
+</section>
+
+<div class="wrap after">
  <h2>Launch site</h2>
  <img src="miya.jpeg" alt="Miyauna Copeland" class="headshot side">
  <p>I'm from Pensacola, Florida, the oldest of three: two brothers and one sister. My family calls me the impulsive one, a reputation built largely on the one time I boarded a skydiving plane.</p>
-
- <h2>Before liftoff</h2>
- <p>I came to physics through a community college, a lot of self-study, and one NASA program that took my proposals seriously. Before that, I was figuring out what I wanted to be when I grew up. The answer turned out to be "someone who computes things about black holes."</p>
- <p>[Add one or two honest, funny past jobs.]</p>
 
  <h2>Current trajectory</h2>
  <p>I'm a physics undergraduate studying the final moments of a black-hole merger. I compute quasinormal-mode predictions for LIGO–Virgo catalog events and document every input and assumption. I also work as a Project Coordinator at Parkhill, Smith &amp; Cooper, and I bring the same care to instrument planning for lunar dust research.</p>
@@ -40,6 +57,7 @@
   <div class="card"><span class="tag">Ongoing</span><h3>A.S. Physics</h3>Austin Community College, August 2024 – present.</div>
   <div class="card"><h3>B.S. Physics</h3>The University of Texas at Dallas, incoming Fall 2027.</div>
  </div>
+
  <h2>The Path So Far</h2>
  <ol class="steps">
   <li><b>Aug 2024.</b> Began an A.S. in Physics and started studying general relativity, differential geometry and tensor calculus on my own.</li>
@@ -51,29 +69,43 @@
  </ol>
  <p>Languages: English (native), French (B1)</p>
  <p><a class="btn" href="research.html">Read the Research</a></p>
- </div>
-<footer>© 2026 Miyauna Copeland.</footer>
+</div>
 <footer>© 2026 Miyauna Copeland.</footer>
 
 <script>
 (function(){
- var s=document.getElementById('record');if(!s)return;
- var t=document.getElementById('rtext'),m=document.getElementById('rmsg');
- function c(x){return Math.max(0,Math.min(1,x))}
- function tick(){
-  var p=c(-s.getBoundingClientRect().top/(s.offsetHeight-innerHeight));
-  var a=c((p-.25)/.35),b=c((p-.6)/.25);
-  t.style.opacity=1-a;
-  t.style.transform='scale('+(1-.9*a)+') rotate('+(-8*a)+'deg)';
-  t.style.filter='blur('+(8*a)+'px)';
-  m.style.opacity=b;
-  m.style.transform='translateY('+((1-b)*20)+'px)';
+ var C=function(x){return Math.max(0,Math.min(1,x))};
+ var back=function(x){return 1+2.9*Math.pow(x-1,3)+1.9*Math.pow(x-1,2)};
+ var secs=[].slice.call(document.querySelectorAll('.journey'));
+ secs.forEach(function(s){s.style.height=s.dataset.h||'300vh'});
+ var wv=document.getElementById('waves');
+ if(wv){var d='M0 35';for(var i=0;i<60;i++)d+=' Q'+(i*40+20)+' '+(i%2?65:5)+' '+(i*40+40)+' 35';
+  wv.setAttribute('viewBox','0 0 2400 70');wv.setAttribute('preserveAspectRatio','none');
+  wv.innerHTML='<path d="'+d+'"/>';}
+ function run(s){
+  var p=C(-s.getBoundingClientRect().top/(s.offsetHeight-innerHeight));
+  [].forEach.call(s.querySelectorAll('[data-t]'),function(el){
+   var w=el.dataset.t.split(',').map(Number),fx=el.dataset.fx;
+   var i=C((p-w[0])/(w[1]-w[0])),o=C((p-w[2])/(w[3]-w[2])),op=Math.min(i,1-o),t='',f='';
+   if(fx==='suck'){var q=o*o;op=i*(o>=1?0:1-q*.6);t='scale('+(1-q*.98)+') rotate('+(-900*q)+'deg)';f='blur('+(o*8)+'px)';}
+   else if(fx==='hole'){t='scale('+(.3+.9*i-.7*o)+')';}
+   else if(fx==='pop'){op=C(i*3)*(1-o);t='scale('+(.5+.5*back(i))+')';}
+   else{t='translateY('+((1-i)*30)+'px)';}
+   if(el.classList.contains('jit')){t+=' translate('+(Math.sin(p*400)*4)+'px,'+(Math.cos(p*330)*3)+'px)';}
+   el.style.opacity=op;el.style.visibility=op<.01?'hidden':'visible';
+   el.style.transform=t;el.style.filter=f;
+  });
+  if(s.dataset.scene==='2'){
+   var L=C((p-.56)/.41),W=C((p-.64)/.2);
+   document.getElementById('rocket').style.transform='translateY('+(150-330*L)+'px) rotate('+(Math.sin(p*90)*5*W)+'deg)';
+   wv.style.transform='translateX('+(-p*900)+'px)';
+   var stop=.8;document.getElementById('hand').style.transform='rotate('+(3600*Math.min(p,stop))+'deg)';
+   document.getElementById('wlabel').textContent=p>stop?'Watch paused. Time dilation takes it from here.':'';
+  }
  }
- addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);tick();
+ function all(){secs.forEach(run)}
+ addEventListener('scroll',all,{passive:true});addEventListener('resize',all);all();
 })();
 </script>
-
 <script src="about.js"></script>
-</body></html>
- <script src="about.js"></script>
 </body></html>
