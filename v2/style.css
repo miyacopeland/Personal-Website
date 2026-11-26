@@ -72,3 +72,5 @@ nav .home{margin-right:auto}
 .headshot.side{float:right;margin:0 0 1rem 1.5rem;position:relative;left:0}
 #chirp{display:block;width:100%;max-width:380px;height:auto}
 #merger{display:block;width:100%;max-width:640px;height:420px;margin:0 auto}
+#chirp{display:block;width:100%;height:auto}
+#chirp line{stroke:#ffffff;stroke-width:1.5}
