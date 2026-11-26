@@ -80,3 +80,18 @@ nav .home{margin-right:auto}
 .rtext h2{margin-top:0}
 .rmsg{position:absolute;max-width:640px;opacity:0;text-align:center;font-family:'Cormorant Garamond',serif;font-size:1.7rem;line-height:1.35}
 @media (prefers-reduced-motion:reduce){.record{height:auto}.rpin{position:static;height:auto;display:block}.rtext,.rmsg{position:static;opacity:1!important;transform:none!important;filter:none!important}}
+.journey{position:relative;height:300vh}
+.jpin{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.sc{position:absolute;max-width:740px;padding:0 6%;opacity:0;visibility:hidden;will-change:transform,opacity,filter}
+.sc.left{text-align:left}.sc h2{margin-top:0}
+.big{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,5vw,3rem);text-align:center}
+.principle{text-align:center;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.4rem,3.4vw,2rem);line-height:1.35}
+.hole{width:90px;height:90px;border-radius:50%;background:#000;box-shadow:0 0 0 5px rgba(212,175,55,.7),0 0 70px 24px rgba(212,175,55,.35);padding:0}
+.snap{color:#d4af37}
+.launch{width:100%;max-width:none;height:100%;padding:0}
+.waves{position:absolute;left:0;top:50%;width:200%;stroke:#d4af37;fill:none;stroke-width:2;opacity:.7}
+.rocket{position:absolute;left:50%;top:50%;width:70px;margin:-60px 0 0 -35px;will-change:transform}
+.watch{position:absolute;right:12%;top:18%;width:84px;height:84px;border:3px solid #d4af37;border-radius:50%;background:#0a1530}
+.hand{position:absolute;left:50%;bottom:50%;width:3px;height:34px;margin-left:-1.5px;background:#f5f1e8;transform-origin:50% 100%}
+.wlabel{position:absolute;right:8%;top:calc(18% + 98px);width:180px;text-align:center;color:#d4af37;font-size:.95rem}
+@media(prefers-reduced-motion:reduce){.journey{height:auto!important}.jpin{position:static;height:auto;display:block;overflow:visible}.sc{position:static;opacity:1!important;visibility:visible!important;transform:none!important;filter:none!important;margin:2rem auto}.hole,.launch{display:none}}
